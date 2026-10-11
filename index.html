@@ -1,0 +1,1376 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Сводка рисерча: фрагмент первой сессии в сервисе знакомств</title>
+<meta name="description" content="Рисерч к тестовому заданию Bootcamp Авито: фрагмент первой сессии сервиса знакомств, оценка CR, конкуренты, экран подписки.">
+<link rel="canonical" href="https://zhivovairinahubus.github.io/dating-first-session/">
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--muted:#5f5f66;--line:#e3e2e1;--soft:#f6f6f4;--acc:#6d3fd1;--accbg:#f3edfe;
+--fact-bg:#e3f6ea;--fact-fg:#11663a;--est-bg:#fff2d6;--est-fg:#7a4b00}
+@media (prefers-color-scheme:dark){:root{--bg:#161618;--fg:#ececec;--muted:#a6a6ad;--line:#333336;--soft:#202023;--acc:#b596ff;--accbg:#2a2140;
+--fact-bg:#183a26;--fact-fg:#8fe0ad;--est-bg:#3d2f12;--est-fg:#f5c66b}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,Roboto,Arial,sans-serif}
+header.top{max-width:1400px;margin:0 auto;padding:32px 24px 8px}
+header.top h1{font-size:32px;line-height:1.2;margin:0 0 10px}
+header.top .meta{color:var(--muted);font-size:15px;margin:0 0 6px}
+header.top .about{max-width:900px;margin:10px 0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted);margin:12px 0 0;padding:10px 14px;background:var(--soft);border-radius:10px;max-width:900px}
+.wrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;max-width:1400px;margin:0 auto;padding:16px 24px 48px}
+nav.toc{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;font-size:14px;border-right:1px solid var(--line);padding-right:16px}
+nav.toc summary{cursor:pointer;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-bottom:8px;list-style:none}
+nav.toc summary::-webkit-details-marker{display:none}
+nav.toc ul{list-style:none;padding:0;margin:0}nav.toc li{margin:4px 0}nav.toc ul ul{padding-left:12px;font-size:13px}
+nav.toc a{color:var(--fg);text-decoration:none}nav.toc a:hover{color:var(--acc)}
+main{min-width:0}
+h2{font-size:24px;margin:48px 0 12px;padding-top:14px;border-top:2px solid var(--line);scroll-margin-top:12px}
+main>h2:first-child{margin-top:0}
+h3{font-size:19px;margin:30px 0 10px;scroll-margin-top:12px}h4{font-size:16px;margin:26px 0 8px}
+p,li{max-width:900px}
+a{color:var(--acc);overflow-wrap:anywhere}
+ul,ol{padding-left:24px}li{margin:4px 0}
+.tbl{overflow-x:auto;margin:14px 0 20px;border:1px solid var(--line);border-radius:10px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.45}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;min-width:120px}
+th{background:var(--soft);font-weight:600}
+tr:last-child td{border-bottom:none}
+code{background:var(--soft);padding:1px 5px;border-radius:5px;font-size:.9em}
+pre{background:var(--soft);padding:14px 16px;border-radius:10px;overflow-x:auto;font-size:13.5px;line-height:1.5;white-space:pre-wrap}
+pre code{background:none;padding:0}
+strong{font-weight:650}
+.tag{display:inline;font-size:12px;font-weight:600;padding:1px 7px;border-radius:999px;margin:0 2px;line-height:1.9;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.t-fact{background:var(--fact-bg);color:var(--fact-fg)}.t-est{background:var(--est-bg);color:var(--est-fg)}.t-asm{background:var(--accbg);color:var(--acc)}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,230px));gap:18px;margin:12px 0 24px;max-width:960px}
+.shots figure{margin:0}
+.shots img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);display:block;background:#fff}
+.shots figcaption{font-size:13px;line-height:1.45;color:var(--muted);margin-top:8px}
+.totop{display:inline-block;margin-top:40px;font-size:14px}
+footer{max-width:1400px;margin:0 auto;padding:0 24px 40px;color:var(--muted);font-size:13px}
+@media (max-width:900px){
+ header.top{padding:20px 16px 4px}header.top h1{font-size:25px}
+ .wrap{grid-template-columns:1fr;gap:16px;padding:8px 16px 40px}
+ nav.toc{position:static;max-height:none;border-right:none;border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+ nav.toc summary{margin:0}nav.toc[open] summary{margin-bottom:8px}
+ h2{font-size:21px}
+ .shots{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ footer{padding:0 16px 32px}
+}
+</style></head>
+<body id="top">
+<header class="top">
+<h1>Сводка рисерча: фрагмент первой сессии в сервисе знакомств</h1>
+<p class="meta">Ирина Живова · 11 октября 2026 · тестовое задание Bootcamp Авито</p>
+<p class="about">Публичная сводка исследования, на котором построен прототип. Скриншоты чужих приложений приведены как цитаты для анализа, права на интерфейсы принадлежат их правообладателям.</p>
+<div class="legend"><span><span class="tag t-fact">факт</span> со ссылкой на источник</span><span><span class="tag t-est">оценка</span> суждение автора</span><span><span class="tag t-asm">допущение</span> принято без данных</span></div>
+</header>
+<div class="wrap">
+<nav class="toc" aria-label="Содержание"><details open id="tocd"><summary>Содержание</summary><div class="toc">
+<ul>
+<li><a href="#korotko">Коротко</a><ul>
+<li><a href="#prinyatye-resheniya">Принятые решения</a></li>
+</ul>
+</li>
+<li><a href="#zadanie-i-kak-my-ego-chitaem">Задание и как мы его читаем</a></li>
+<li><a href="#konkurenty-pervaya-sessiya-anketa-i-podpiska">Конкуренты: первая сессия, анкета и подписка</a><ul>
+<li><a href="#sravnitelnaya-tablitsa">Сравнительная таблица</a></li>
+<li><a href="#nablyudeniya">Наблюдения</a></li>
+<li><a href="#klyuchevye-ekrany">Ключевые экраны</a></li>
+<li><a href="#rossiyskie-servisy">Российские сервисы</a></li>
+</ul>
+</li>
+<li><a href="#igry-i-kvizy">Игры и квизы</a></li>
+<li><a href="#temy-i-voprosy-ankety">Темы и вопросы анкеты</a><ul>
+<li><a href="#polza-dlya-vtoroy-storony">Польза для второй стороны</a></li>
+<li><a href="#tsena-otveta">Цена ответа</a></li>
+<li><a href="#matritsa-polza-tsena">Матрица «польза × цена»</a></li>
+<li><a href="#pravovye-ogranicheniya-kratko-ne-yuridicheskoe-z">Правовые ограничения (кратко, не юридическое заключение)</a></li>
+</ul>
+</li>
+<li><a href="#benchmarki-i-metod-otsenki-cr">Бенчмарки и метод оценки CR</a><ul>
+<li><a href="#chto-est-publichno">Что есть публично</a></li>
+<li><a href="#metod">Метод</a></li>
+<li><a href="#varianty-flou-po-metodu">Варианты флоу по методу</a></li>
+</ul>
+</li>
+<li><a href="#ekran-podpiski">Экран подписки</a><ul>
+<li><a href="#chto-prodaem-kontrol-i-pervyy-shag">Что продаём: «Контроль и первый шаг»</a></li>
+<li><a href="#rassmotrennye-varianty">Рассмотренные варианты</a></li>
+<li><a href="#platnye-funktsii-i-tarify-konkurentov-2025-2026">Платные функции и тарифы конкурентов, 2025–2026</a></li>
+<li><a href="#nashi-tarify-dopuschenie-dlya-prototipa">Наши тарифы: допущение для прототипа</a></li>
+<li><a href="#dannye-o-konversii-ekrana-podpiski">Данные о конверсии экрана подписки</a></li>
+</ul>
+</li>
+<li><a href="#kachestvo-zapolneniya">Качество заполнения</a></li>
+<li><a href="#golos-i-video">Голос и видео</a></li>
+<li><a href="#gipotezy">Гипотезы</a></li>
+<li><a href="#flou-obmen-ekrany">Флоу «Обмен»: экраны</a><ul>
+<li><a href="#pochemu-poyavilsya-ekran-5-anketa-gotova">Почему появился экран 5 «Анкета готова»</a></li>
+</ul>
+</li>
+<li><a href="#plan-proverki">План проверки</a><ul>
+<li><a href="#sinteticheskiy-progon-bystryy-test-ne-dokazatels">Синтетический прогон (быстрый тест, не доказательство)</a></li>
+<li><a href="#koridornye-testy-na-3-5-lyudyah">Коридорные тесты на 3–5 людях</a></li>
+</ul>
+</li>
+<li><a href="#ogranicheniya-i-chto-ne-udalos">Ограничения и что не удалось</a></li>
+</ul>
+</div>
+</details></nav>
+<main><h2 id="korotko">Коротко</h2>
+<p>Это рисерч, на котором построен прототип фрагмента первой сессии сервиса знакомств: 5 экранов анкеты после блока «о себе» и экран, предлагающий купить подписку. Цель задания: CR от первого экрана фрагмента до экрана подписки выше 90%, при этом ответы должны помогать второй стороне решить, подходит ли ей человек.</p>
+<p><strong>Что получилось.</strong></p>
+<ul>
+<li><strong>Флоу «Обмен», 5 экранов анкеты + подписка:</strong> привычки и ритм дня → дети и планы → дом и переезд → «в чём вам важно совпадать» → «Анкета готова» с выбором, кто увидит анкету → подписка. Оценка сквозной CR до экрана подписки: <strong>94,3% в базовом сценарии, диапазон 90,1–97,9%</strong> <span class="tag t-est">оценка, метод ниже</span>.</li>
+<li><strong>Правило взаимности на экране 4:</strong> отметить тему можно, только если вы ответили на неё о себе. Тем можно отметить сколько угодно: отметки задают порядок ленты, а не фильтр.</li>
+<li><strong>Экран 5 «Анкета готова»:</strong> у анкеты появляется финал. Человек видит, как его увидят другие, кого ему покажем первыми по его ответам, и кто сейчас увидит анкету. Это мост от рассказа о себе к выбору видимости и подписке.</li>
+<li><strong>Подписка «Контроль и первый шаг»:</strong> подбор по ответам бесплатный, и экран подписки говорит об этом в первых строках. Платно только то, чего анкета не обещала: выбор, кому видна анкета (его можно сделать ещё на экране 5, до цены), сообщение вместе с «Нравится» и список тех, кому вы понравились. Тарифы 299 / 599 / 1 190 ₽ <span class="tag t-asm">допущение для прототипа</span>, без пробного периода.</li>
+</ul>
+<p><strong>Главные выводы рисерча.</strong></p>
+<ol>
+<li><strong>Лидеры рынка почти не продают подписку в первой сессии.</strong> Bumble и Tinder ведут сразу в ленту, Hinge показывает один мягкий тизер с «Maybe later», Mamba продаёт VIP только когда человек тянется к фильтру <span class="tag t-fact">факт: Mobbin, собственная запись экрана Mamba 08.10.2026</span>. Поэтому наш экран подписки должен быть мягким и продавать то, что нужно уже сейчас.</li>
+<li><strong>Привычки и дети — реальные стоп-факторы в России.</strong> Графу «вредные привычки» проверяют до решения о знакомстве 92% женщин и 86% мужчин (<a href="https://daily.afisha.ru/news/109972-opros-40-muzhchin-ne-gotovy-znakomitsya-s-kuryaschey-devushkoy/" target="_blank" rel="noopener">опрос Mamba через Афишу Daily, 29.05.2026</a> <span class="tag t-fact">факт</span>, размер выборки не указан). Не собираются иметь детей 18% россиян в 2025 году против 6% в 2005 (<a href="https://ru.themoscowtimes.com/2025/05/20/dolya-ne-zhelayuschih-imet-detei-rossiyan-podskochila-vtroe-za-20-let-pravleniya-putina-a163884" target="_blank" rel="noopener">ВЦИОМ в пересказе The Moscow Times</a> <span class="tag t-fact">факт, по пересказу</span>).</li>
+<li><strong>Публичного бенчмарка пошагового отвала в онбординге знакомств нет.</strong> Метод оценки CR собран на академических данных о прерывании онлайн-опросов. Главное: <strong>чувствительность темы почти не влияет на бросание</strong> (<a href="https://www.surveypractice.org/article/84347-breakoffs-in-an-hour-long-online-survey" target="_blank" rel="noopener">Emery et al. 2023</a>, <a href="https://www.rti.org/publication/impact-question-topics-filter-question-formats-web-survey-breakoffs" target="_blank" rel="noopener">Chen et al. 2022</a> <span class="tag t-fact">факт</span>); она бьёт по качеству ответов. Бросают чаще в начале и при смене темы.</li>
+<li><strong>«Ответ в обмен на фильтр» уже работает у конкурентов.</strong> Mamba не даёт искать по параметру, пока вы не указали его о себе; Bumble даёт расширенный фильтр только по категориям, заполненным в своём профиле (<a href="https://bumble.com/the-buzz/bumble-advanced-filters" target="_blank" rel="noopener">Bumble</a> <span class="tag t-fact">факт</span>). Количественного эффекта никто не публиковал.</li>
+<li><strong>Каждый вопрос либо выгода для человека, либо налог.</strong> Опросник из «налогов» в разборе Ильи Красинского дал доходимость 15–20% (<a href="https://t.me/s/ilya_krasinsky/436" target="_blank" rel="noopener">пост</a>, <a href="https://www.youtube.com/live/tr9ectuZoq4" target="_blank" rel="noopener">воркшоп 10.09.2026</a> <span class="tag t-fact">факт</span>). Поэтому у каждого экрана есть подзаголовок «что вы получите».</li>
+<li><strong>Голос в анкете записывает меньшинство:</strong> около 13% новых пользователей Hinge через месяц после запуска голосового промпта (<a href="https://www.ladn.eu/tech-a-suivre/hinge-messages-audios-succes-tiktok/" target="_blank" rel="noopener">L'ADN, 01.12.2021</a> <span class="tag t-fact">факт, по пересказу</span>). Обязательный голос несовместим с целью 90%.</li>
+<li><strong>Религия, здоровье, политика, интимная жизнь — специальные категории персональных данных</strong> (<a href="https://legalacts.ru/doc/152_FZ-o-personalnyh-dannyh/glava-2/statja-10/" target="_blank" rel="noopener">152-ФЗ, ст. 10</a> <span class="tag t-fact">факт</span>). С 30.05.2025 штраф за их утечку 10–20 млн ₽ уже за первый случай (<a href="https://pravo.ru/story/261802/" target="_blank" rel="noopener">Право.ру</a> <span class="tag t-fact">факт</span>). В первой сессии эти темы не спрашиваем.</li>
+</ol>
+<h3 id="prinyatye-resheniya">Принятые решения</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Развилка</th>
+<th>Решение</th>
+<th>Почему</th>
+<th>Что отклонено</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Флоу</td>
+<td><strong>«Обмен»</strong>: 5 экранов анкеты + подписка, ≈ 94,3% (90,1–97,9%)</td>
+<td>Начинается с лёгкой темы; закрывает «кого ищу» без повтора цели; экран подписки вырастает из ответов</td>
+<td>«Стоп-факторы» (3 экрана): та же CR, но подписке нечего персонально пообещать. Остальные варианты проваливают цель в пессимистичном сценарии или требуют данных, которых на старте нет</td>
+</tr>
+<tr>
+<td>Экран 4 «в чём вам важно совпадать»</td>
+<td>Берём, с правилом взаимности; шесть тем, отмечать можно сколько угодно</td>
+<td>Двусторонность; прецеденты у Mamba и Bumble; отметки меняют порядок ленты, а не фильтруют её, поэтому лимит не нужен</td>
+<td>Вопрос о партнёре на каждой теме: вдвое больше решений. Лимит на число тем: лишнее решение без пользы</td>
+</tr>
+<tr>
+<td>Финал анкеты</td>
+<td>Экран 5 «Анкета готова»: «Так вас увидят», «Кого покажем первыми», «Кто увидит анкету» со ссылкой «Изменить»; выбор не обязателен</td>
+<td>У анкеты появляется конец, результат ответов виден до разговора о деньгах, тема видимости вырастает из рассказа о себе</td>
+<td>Мост внутри экрана подписки; продавать ещё темы или первое слово; обязательный выбор видимости (подробнее в разделе «Почему появился экран 5»)</td>
+</tr>
+<tr>
+<td>Обязательность</td>
+<td>Ни один экран не обязателен; на стоп-факторах «Не хочу говорить» вместо «Пропустить»</td>
+<td>Отказ различим и измерим</td>
+<td>Жёсткая обязательность: отвал без пользы</td>
+</tr>
+<tr>
+<td>Ритм дня</td>
+<td>Первый вопрос экрана 1: «Бодрее утром · Бодрее вечером · По-разному · Не хочу говорить»</td>
+<td>Лёгкий вопрос для разгона; пары с похожим ритмом довольнее отношениями</td>
+<td>Перенести спорт в профиль ради запаса CR: запас в пессимистичном сценарии 0,1 п.п. признан достаточным</td>
+</tr>
+<tr>
+<td>Видимость</td>
+<td>По теме: привычки и дети видны со скрытием в один тап, «Не хочу говорить» скрывает ответ сам; «с кем живу» скрыто, только для подбора</td>
+<td>Безопасность</td>
+<td>Всё скрыто: второй стороне нечего увидеть</td>
+</tr>
+<tr>
+<td>Тип экрана подписки</td>
+<td>Мягкий, «Не сейчас» ведёт в ленту</td>
+<td>Задание просит экран, «предлагающий» купить; на двустороннем рынке неплатящий остаётся анкетой для других</td>
+<td>Жёсткий: больше денег с установки, но убирает анкеты с витрины</td>
+</tr>
+<tr>
+<td>Что продаём</td>
+<td>«Контроль и первый шаг»</td>
+<td>Рамка честности: всё, что вы рассказали о себе, работает на вас бесплатно</td>
+<td>Строгий фильтр по отмеченным пунктам: продаёт ядро обещания экрана 4</td>
+</tr>
+<tr>
+<td>Тарифы</td>
+<td>Неделя 299 ₽ / месяц 599 ₽ (выделен) / 3 месяца 1 190 ₽ <span class="tag t-asm">допущение для прототипа</span>, без пробного периода</td>
+<td>Ориентир рынка РФ, месяц на уровне VK Знакомств</td>
+<td>Один тариф с пробным периодом, 6 месяцев, зачёркнутые цены</td>
+</tr>
+<tr>
+<td>Голос и видео</td>
+<td>Не во флоу; необязательное состояние прототипа «Голосовой ответ · скоро» на экране 5</td>
+<td>Голос записывает меньшинство</td>
+<td>Обязательная или необязательная запись во флоу</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="zadanie-i-kak-my-ego-chitaem">Задание и как мы его читаем</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Требование задания</th>
+<th>Как закрываем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Мобильный фрагмент анкеты в 3–5 экранов</td>
+<td>5 экранов анкеты, верхняя граница</td>
+</tr>
+<tr>
+<td>Экран, предлагающий купить подписку</td>
+<td>Последний экран фрагмента, мягкий, с «Не сейчас»</td>
+</tr>
+<tr>
+<td>Цель: CR больше 90% от первого экрана до шага «купить подписку»</td>
+<td>Оценка по методу с поправками, три сценария, сквозная как произведение экранов</td>
+</tr>
+<tr>
+<td>Вопросы с высокой CR, которые помогают второй стороне решить</td>
+<td>Темы отобраны по матрице «польза × цена»</td>
+</tr>
+<tr>
+<td>Шаги под приоритетные гипотезы</td>
+<td>У каждого экрана одна главная гипотеза</td>
+</tr>
+<tr>
+<td>Оценка CR, описание и состояния на каждом экране</td>
+<td>Центр и диапазон плюс строка «на чём основано»; 2–5 состояний на экран</td>
+</tr>
+<tr>
+<td>Обязательный или нет, можно ли скрыть</td>
+<td>Метка обязательности и видимости у каждого экрана</td>
+</tr>
+<tr>
+<td>Видео до 1 минуты</td>
+<td>Укладываемся в 60 секунд</td>
+</tr>
+<tr>
+<td>Не включать вход, авторизацию, верификацию, разрешения, имя, пол, возраст, фото, «о себе»</td>
+<td>Этих экранов во фрагменте нет</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Допущения по неоднозначностям.</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Неоднозначность</th>
+<th>Допущение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Где начинается фрагмент</td>
+<td>После блока «Пара слов о себе»: пол, гео, цель и «о себе» уже пройдены <span class="tag t-asm">допущение</span></td>
+</tr>
+<tr>
+<td>Входит ли экран подписки в 3–5 экранов</td>
+<td>Нет: 3–5 экранов анкеты плюс экран подписки, как в формулировке задания <span class="tag t-asm">допущение</span></td>
+</tr>
+<tr>
+<td>Что такое «шаг купить подписку» для CR</td>
+<td>Показ экрана подписки. Долю выбравших тариф даём отдельно, без точной цифры <span class="tag t-asm">допущение</span></td>
+</tr>
+<tr>
+<td>Повторять ли интересы и «о себе»</td>
+<td>Нет: они стоят до нашего фрагмента <span class="tag t-asm">допущение</span></td>
+</tr>
+<tr>
+<td>«Кого / что ищу»</td>
+<td>Цель выбрана раньше. Тему закрывает экран «что важно в партнёре», а не повтор цели <span class="tag t-asm">допущение</span></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="konkurenty-pervaya-sessiya-anketa-i-podpiska">Конкуренты: первая сессия, анкета и подписка</h2>
+<p>Участок анализа: от первого вопроса анкеты после регистрации до ленты или первого экрана подписки. Зарубежные приложения разобраны по экранам Mobbin (iOS; Mobbin не показывает дату съёмки, свежесть оценена по признакам интерфейса), Mamba по собственной записи экрана (iOS 4.46.1, 08.10.2026), Duolingo по съёмке в эмуляторе (Android 6.100.3, 08.10.2026). Twinby, VK Знакомств и Teamo в Mobbin нет, по ним собрано подтверждённое в магазинах приложений и статьях.</p>
+<h3 id="sravnitelnaya-tablitsa">Сравнительная таблица</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Приложение</th>
+<th>Экранов в зоне</th>
+<th>Вопросов</th>
+<th>Обязательных</th>
+<th>С вводом текста</th>
+<th>Пропуск</th>
+<th>«Не скажу»</th>
+<th>Видимость поля</th>
+<th>Подписка в первой сессии</th>
+<th>Дата / версия</th>
+<th>В РФ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hinge</td>
+<td>20</td>
+<td>14 + фото, промпты, голос</td>
+<td>4</td>
+<td>3 (+2 необяз.)</td>
+<td>Кнопки пропуска нет</td>
+<td>«Prefer not to say»</td>
+<td>«Visible on profile», включено по умолчанию</td>
+<td>Тизер «twice as many dates», «Maybe later»</td>
+<td>Дата неизв., оценка 2024–2025</td>
+<td>Ушёл к 30.06.2023</td>
+</tr>
+<tr>
+<td>Bumble, версия А</td>
+<td>17</td>
+<td>15</td>
+<td>3</td>
+<td>2</td>
+<td>Skip на 10 экранах</td>
+<td>Подпись «можно не отвечать»</td>
+<td>Бейджи</td>
+<td>Нет</td>
+<td>Не раньше 04.2024</td>
+<td>Ушёл в 03.2022</td>
+</tr>
+<tr>
+<td>Bumble, версия Б</td>
+<td>2 до ленты + раздел профиля из 11 полей</td>
+<td>11</td>
+<td>2</td>
+<td>—</td>
+<td>Skip в модальных окнах</td>
+<td>—</td>
+<td>—</td>
+<td>Нет</td>
+<td>Оценка 2025–2026</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Tinder</td>
+<td>7 + 3 служебных</td>
+<td>7</td>
+<td>3 + проверка лица</td>
+<td>2</td>
+<td>Skip на 4</td>
+<td>—</td>
+<td>—</td>
+<td>Нет</td>
+<td>Оценка 2025–2026</td>
+<td>Ушёл к 30.06.2023</td>
+</tr>
+<tr>
+<td>Duolingo (не знакомства, эталон квиза)</td>
+<td>16 + переход</td>
+<td>6</td>
+<td>6</td>
+<td>0</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>—</td>
+<td>Не предлагал; Super с пробными 7 днями через вкладку</td>
+<td>08.10.2026, Android 6.100.3</td>
+<td>Работает</td>
+</tr>
+<tr>
+<td>Mamba</td>
+<td>11 + гейт фильтра</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>Крестик</td>
+<td>«No answer» первым пунктом</td>
+<td>Нет</td>
+<td>Контекстно: гейт «заполните анкету или купите VIP»</td>
+<td>08.10.2026, iOS 4.46.1</td>
+<td>Работает</td>
+</tr>
+<tr>
+<td>Twinby</td>
+<td>Неизв.</td>
+<td>Психотест</td>
+<td>Тест обязателен</td>
+<td>Неизв.</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Подписка с 01.2024, главное — кому вы понравились</td>
+<td>App Store 2.4.0, 31.08.2026</td>
+<td>Работает</td>
+</tr>
+<tr>
+<td>VK Знакомства</td>
+<td>Неизв.</td>
+<td>Пол, возраст, радиус, цель + «Личное»</td>
+<td>4</td>
+<td>Неизв.</td>
+<td>—</td>
+<td>—</td>
+<td>Анкету не видят друзья VK</td>
+<td>Premium от 599 ₽ в месяц</td>
+<td>2025–2026</td>
+<td>Работает</td>
+</tr>
+<tr>
+<td>Teamo</td>
+<td>Неизв.</td>
+<td>«Отношение к жизни 1/15»</td>
+<td>Неизв.</td>
+<td>Неизв.</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Премиум</td>
+<td>6.19.x, 09.2026</td>
+<td>Работает</td>
+</tr>
+<tr>
+<td>Plenty of Fish</td>
+<td>28</td>
+<td>≈ 26</td>
+<td>Видимой нет</td>
+<td>3</td>
+<td>—</td>
+<td>Только у деликатных</td>
+<td>«Not visible to other members» на отдельном поле</td>
+<td>Нет</td>
+<td>Дата неизв.</td>
+<td>Не работает</td>
+</tr>
+<tr>
+<td>Coffee Meets Bagel</td>
+<td>28</td>
+<td>4</td>
+<td>4</td>
+<td>1</td>
+<td>—</td>
+<td>У цели</td>
+<td>Пояснение под полем</td>
+<td>Нет</td>
+<td>Дата неизв.</td>
+<td>Не работает</td>
+</tr>
+<tr>
+<td>Badoo, квиз профиля</td>
+<td>26</td>
+<td>12</td>
+<td>0</td>
+<td>4</td>
+<td>«›» как пропуск</td>
+<td>«I'd rather not say»</td>
+<td>—</td>
+<td>Карточка в ленте</td>
+<td>Дата неизв.</td>
+<td>Ушёл из РФ</td>
+</tr>
+</tbody>
+</table></div>
+<p>Источники по уходу сервисов из России: <a href="https://www.thedailyupside.com/technology/social-media/match-group-dumps-russia/" target="_blank" rel="noopener">Daily Upside</a> (Match Group: Tinder, Hinge), <a href="https://www.aol.com/news/bumble-suspends-app-russia-belarus-171738728.html" target="_blank" rel="noopener">AOL</a> (Bumble, Badoo) <span class="tag t-fact">факт</span>. Механики этих сервисов переносимы, но российский пользователь их почти не знает.</p>
+<h3 id="nablyudeniya">Наблюдения</h3>
+<ol>
+<li><strong>Подписку в первой сессии показывают единицы.</strong> Hinge показывает мягкий тизер, Feeld — полный экран подписки с крупной кнопкой «Skip». Bumble, Tinder, Coffee Meets Bagel, Plenty of Fish, Mamba и Duolingo ведут в ленту или в урок <span class="tag t-fact">факт: Mobbin, запись Mamba, съёмка Duolingo</span>. Наш экран подписки должен заработать своё место ценностью.</li>
+<li><strong>Две и больше темы на одном экране — норма лидеров.</strong> У Bumble алкоголь и курение на одном экране, у Tinder четыре привычки и счётчик «Next 0/4» <span class="tag t-fact">факт: Mobbin</span>. Это позволяет уложить стоп-факторы в 3–4 экрана.</li>
+<li><strong>Есть ли дети и хочет ли человек детей — один экран</strong> у Bumble, с подписью-разрешением «Feel free to skip if you'd prefer not to say» <span class="tag t-fact">факт: Mobbin</span>.</li>
+<li><strong>Три стратегии отказа отвечать:</strong> у Hinge нет пропуска, есть «Prefer not to say»; у Mamba «No answer» первым пунктом; у Badoo стрелка «›» работает как пропуск, а «I'd rather not say» стоит равным вариантом <span class="tag t-fact">факт</span>. Данных о том, какая стратегия лучше, нет ни у кого.</li>
+<li><strong>Взаимность «ответ ↔ фильтр»</strong> есть у Mamba (гейт «заполните анкету или купите VIP») и Bumble (фильтр только по своим категориям) <span class="tag t-fact">факт</span>.</li>
+<li><strong>Видимость поля:</strong> Hinge — на каждом чувствительном поле, включена по умолчанию; Plenty of Fish скрывает отдельное поле; Coffee Meets Bagel объясняет под полем, что именно увидят другие <span class="tag t-fact">факт: Mobbin</span>.</li>
+<li><strong>Объяснения «зачем этот вопрос» почти ни у кого нет.</strong> Есть мотивационные обещания: Tinder «could lead to 25% more matches», Hinge «The more you share, the better your matches will be». Duolingo объясняет через экран-реакцию на ответ <span class="tag t-fact">факт</span>. Это незанятое место, мы занимаем его подзаголовком-выгодой <span class="tag t-est">оценка</span>.</li>
+<li><strong>Анкету выносят из онбординга.</strong> Bumble (версия Б) переносит её в раздел профиля с «20% complete», Mamba спрашивает анкету только на гейте фильтра <span class="tag t-fact">факт</span>. Это аргумент за короткий флоу.</li>
+<li><strong>Скрыть себя от знакомых предлагают давно.</strong> Tinder в онбординге предлагает заблокировать контакты из телефона, VK Знакомства не показывают анкету друзьям VK <span class="tag t-fact">факт</span>. Скрытия от контактов по маркетплейсу нет ни у кого: на этом строится платная часть нашей подписки <span class="tag t-est">оценка</span>.</li>
+<li><strong>Давление на экране подписки</strong> (таймер у Noom, «gone forever» у Sunlitt и Beside, зачёркнутые цены у Mamba) для сервиса серьёзных отношений на старте — репутационный риск <span class="tag t-est">оценка</span>.</li>
+</ol>
+<h3 id="klyuchevye-ekrany">Ключевые экраны</h3>
+<p>Только экраны, которые поясняют выводы выше. Все изображения — экраны из <a href="https://mobbin.com" target="_blank" rel="noopener">Mobbin</a>, права на интерфейсы принадлежат правообладателям приложений.</p>
+<h4 id="hinge-ne-skazhu-i-vidimost-vmesto-propuska">Hinge: «не скажу» и видимость вместо пропуска</h4>
+<div class="shots">
+<figure><img src="img/hinge-drink.jpg" alt="Hinge: вопрос Do you drink? с вариантом Prefer not to say и галочкой Visible on profile" width="480" height="1089" loading="lazy"><figcaption>Вариант «Prefer not to say» вместо кнопки пропуска, галочка «Visible on profile» включена. Правообладатель: Hinge (Match Group). Дата съёмки неизвестна, оценка 2024–2025. <a href="https://mobbin.com/screens/26bf883d-4526-47c7-9afc-263bc2068803" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+<figure><img src="img/hinge-visibility.jpg" alt="Hinge: редактор профиля, у каждого поля отметка Visible или Hidden" width="480" height="1089" loading="lazy"><figcaption>В профиле видимость настраивается у каждого поля: «Visible» или «Hidden». Правообладатель: Hinge (Match Group). Дата неизвестна, оценка 2024–2025. <a href="https://mobbin.com/screens/c0375f4b-141c-4a46-bb40-83aa5ffc916b" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+<figure><img src="img/hinge-teaser.jpg" alt="Hinge: тизер подписки Subscribers go on twice as many dates с кнопкой Maybe later" width="480" height="1089" loading="lazy"><figcaption>Единственная подписка в первой сессии у лидеров: мягкий тизер с «Maybe later». Правообладатель: Hinge (Match Group). Дата неизвестна, оценка 2024–2025. <a href="https://mobbin.com/screens/0b2e9398-e4aa-4366-84f7-7f90546101e4" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+</div>
+
+<h4 id="bumble-temy-na-odnom-ekrane-i-anketa-posle-lenty">Bumble: темы на одном экране и анкета после ленты</h4>
+<div class="shots">
+<figure><img src="img/bumble-habits.jpg" alt="Bumble: алкоголь и курение на одном экране" width="480" height="1089" loading="lazy"><figcaption>Алкоголь и курение на одном экране, подпись «Share as much… as you're comfortable with». Правообладатель: Bumble Inc. Не раньше апреля 2024. <a href="https://mobbin.com/screens/59d890ff-4815-40aa-a773-b1c7988206af" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+<figure><img src="img/bumble-kids.jpg" alt="Bumble: есть ли дети и хочет ли человек детей, на одном экране" width="480" height="1089" loading="lazy"><figcaption>Есть ли дети и хочет ли человек детей, на одном экране; разрешение пропустить в подзаголовке. Правообладатель: Bumble Inc. Не раньше апреля 2024. <a href="https://mobbin.com/screens/15363508-04cd-4425-a52c-c747189ad92b" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+<figure><img src="img/bumble-profile-hub.jpg" alt="Bumble: раздел профиля 20% complete с блоками для заполнения" width="480" height="1089" loading="lazy"><figcaption>Новая версия: анкета вынесена из онбординга в раздел профиля «20% complete». Правообладатель: Bumble Inc. Оценка 2025–2026. <a href="https://mobbin.com/screens/6fda00e7-80c4-491f-b6ae-0021249ed16d" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+</div>
+
+<h4 id="tinder-chetyre-privychki-odnim-ekranom-i-skrytie">Tinder: четыре привычки одним экраном и скрытие от знакомых</h4>
+<div class="shots">
+<figure><img src="img/tinder-habits.jpg" alt="Tinder: четыре вопроса о привычках на одном экране со счётчиком Next 0/4" width="480" height="1089" loading="lazy"><figcaption>Четыре привычки на одном экране, счётчик «Next 0/4», пропуск вверху. Правообладатель: Tinder (Match Group). Оценка 2025–2026. <a href="https://mobbin.com/screens/c82cefc5-cb39-4d47-a61d-650a1f91f9e4" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+<figure><img src="img/tinder-avoid-contacts.jpg" alt="Tinder: экран Want to avoid someone you know on Tinder?" width="480" height="1089" loading="lazy"><figcaption>Скрыться от знакомых предлагают прямо в онбординге (бесплатно, по контактам телефона). Правообладатель: Tinder (Match Group). Оценка 2025–2026. <a href="https://mobbin.com/screens/3fe0b009-9c92-4c2f-9664-7ce252b7e8ba" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+</div>
+
+<h4 id="badoo-ne-skazhu-kak-ravnyy-otvet">Badoo: «не скажу» как равный ответ</h4>
+<div class="shots">
+<figure><img src="img/badoo-rather-not-say.jpg" alt="Badoo: вопрос о росте, вариант I'd rather not say, стрелка как пропуск" width="480" height="1089" loading="lazy"><figcaption>«I'd rather not say» стоит рядом с ответом, стрелка «›» работает как пропуск. Правообладатель: Badoo (Bumble Inc.). Дата неизвестна. <a href="https://mobbin.com/screens/db2ae697-ac4d-44a8-9d1b-6b4dc4540158" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+<figure><img src="img/badoo-answered.jpg" alt="Badoo: после ответа стрелка становится зелёной галочкой" width="480" height="1089" loading="lazy"><figcaption>После ответа стрелка становится зелёной галочкой: пропуск и «далее» — одна кнопка. Правообладатель: Badoo (Bumble Inc.). Дата неизвестна. <a href="https://mobbin.com/screens/f0d3ffeb-d911-4ca7-9ad3-b1f01ff99457" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+</div>
+
+<h4 id="feeld-polnyy-ekran-podpiski-vnutri-onbordinga">Feeld: полный экран подписки внутри онбординга</h4>
+<div class="shots">
+<figure><img src="img/feeld-paywall.jpg" alt="Feeld: экран подписки на шаге 11 из 13 с тарифами и кнопкой Skip" width="480" height="1089" loading="lazy"><figcaption>Единственный найденный сервис знакомств с полным экраном подписки в онбординге (шаг 11 из 13), отказ — крупная кнопка «Skip». Правообладатель: Feeld Ltd. Дата неизвестна. <a href="https://mobbin.com/screens/361370b3-d285-4f5a-a515-6c5a91e35b2e" target="_blank" rel="noopener">Экран из Mobbin</a></figcaption></figure>
+</div>
+
+<h3 id="rossiyskie-servisy">Российские сервисы</h3>
+<p>Пошаговых публичных разборов Twinby, VK Знакомств и Teamo за 2025–2026 нет, в Mobbin их тоже нет. Ниже только подтверждённое.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Приложение</th>
+<th>Что подтверждено</th>
+<th>Подписка</th>
+<th>Вывод для нас</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mamba</td>
+<td>11 вопросов анкеты, ни одного обязательного, «No answer» первым пунктом. Фильтр по параметру доступен, только если вы указали его о себе, иначе предлагают VIP <span class="tag t-fact">факт: собственная запись экрана, iOS 4.46.1, 08.10.2026</span></td>
+<td>VIP контекстно: из фильтра, гейта, баннера; 1 490 / 2 990 / 6 990 ₽ с зачёркнутыми ценами</td>
+<td>Прецедент взаимности на родном рынке</td>
+</tr>
+<tr>
+<td>Twinby</td>
+<td>Обязательный психотест при регистрации, итог — процент совместимости; на скриншотах App Store оси совместимости «Семья, Дети, Деньги, Мораль, Амбиции» <span class="tag t-fact">факт: App Store, версия 2.4.0 от 31.08.2026</span></td>
+<td>С января 2024, главная функция — кому вы понравились; конверсия в оплату, по словам компании, выросла с 2,7% до 5%</td>
+<td>Длинный тест несовместим с целью 90%, но «Дети» и «Семья» как оси совместимости подтверждают выбор тем</td>
+</tr>
+<tr>
+<td>VK Знакомства</td>
+<td>Вход через VK ID, имя, фото и возраст подтягиваются. Обязательны пол, возраст, радиус, цель. «Личное»: рост, образование, работа, семейное положение, дети, алкоголь, спорт. Рейтинг полноты: фото +5%, данные +5%, верификация +15% (<a href="https://t-j.ru/vk-dating/" target="_blank" rel="noopener">T-Ж, 26.01.2026</a> <span class="tag t-fact">факт</span>)</td>
+<td>Premium от 599 ₽ в месяц <span class="tag t-fact">факт: RuStore, 04.2026</span></td>
+<td>Самый близкий аналог: сервис внутри большой экосистемы с предзаполнением из основного аккаунта. Набор «дети, алкоголь, спорт» совпадает с нашим</td>
+</tr>
+<tr>
+<td>Teamo</td>
+<td>4 слайда о ценностях до регистрации; на скриншотах App Store карточки «Отношение к жизни 1/15» <span class="tag t-fact">факт: App Store, 6.19.x, 09.2026</span></td>
+<td>Премиум: сообщения без взаимности, гости, расширенный подбор</td>
+<td>Длинный тест — серьёзный сегмент, но тот же конфликт с CR</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="igry-i-kvizy">Игры и квизы</h2>
+<p>Свежих (2025–2026) разборов дизайна Sims и Fallout найти не удалось. Старые данные применимы, потому что описывают поведение, а не интерфейс.</p>
+<ul>
+<li>В The Sims 4 за 2021 год игроки провели в редакторе персонажа 146 млн часов из ≈ 1,2 млрд (≈ 12%) (<a href="https://www.thegamer.com/sims-4-play-time-2021-create-a-sim/" target="_blank" rel="noopener">TheGamer по отчёту EA</a> <span class="tag t-fact">факт, по пересказу</span>). Создание персонажа — самостоятельная ценность, а не налог перед игрой.</li>
+<li>В Fallout 4 характеристики персонажа распределяются через детскую книжку прямо в сцене пролога (<a href="https://fallout.wiki/wiki/You%27re_SPECIAL!_(Fallout_4)" target="_blank" rel="noopener">Fallout Wiki</a> <span class="tag t-fact">факт</span>).</li>
+<li>Кастомизация аватара повышает идентификацию с ним, а через неё мотивацию (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6329434/" target="_blank" rel="noopener">JMIR 2019, N=259</a> <span class="tag t-fact">факт</span>).</li>
+<li>Илья Красинский (<a href="https://t.me/s/ilya_krasinsky/595" target="_blank" rel="noopener">Telegram</a>, <a href="https://t.me/s/ilya_krasinsky/436" target="_blank" rel="noopener">антикейс</a>, <a href="https://www.youtube.com/live/tr9ectuZoq4" target="_blank" rel="noopener">воркшоп</a> <span class="tag t-fact">факт</span>): квиз не равен опроснику; каждый вопрос — выгода или налог; формулировки берутся из языка клиентов.</li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Механика</th>
+<th>Почему держит <span class="tag t-est">оценка</span></th>
+<th>Как на нашем экране</th>
+<th>Берём</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Живое превью персонажа (Sims)</td>
+<td>Сразу видно результат выбора</td>
+<td>Карточка «Так вас увидят» на экране 5 собирает видимые ответы экранов 1–3</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Ограниченный бюджет выбора (3 черты в Sims)</td>
+<td>Ограничение делает выбор осмысленным</td>
+<td>Отметки на экране 4 меняют порядок ленты, а не отсекают людей, поэтому лимит только добавлял решение</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Мгновенная обратная связь</td>
+<td>Связь «действие → результат»</td>
+<td>Строка «Учтём в подборе» под ответом вместо отдельного экрана</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Диегетичность (книжка в Fallout)</td>
+<td>Не ощущается как форма</td>
+<td>Вопросы человеческим языком: «Как у вас с курением?» вместо «Вредные привычки»</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Обратимость</td>
+<td>Снижает тревогу перед выбором</td>
+<td>«Можно поменять в профиле» на чувствительных экранах</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Квиз ведёт к результату для человека</td>
+<td>Человек видит, к чему идёт</td>
+<td>Финал — экран «Анкета готова»: так вас увидят и кого покажем первыми</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Тип личности по итогам квиза</td>
+<td>Любопытство</td>
+<td>Выведенный тип бесполезен второй стороне</td>
+<td>Нет</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="temy-i-voprosy-ankety">Темы и вопросы анкеты</h2>
+<h3 id="polza-dlya-vtoroy-storony">Польза для второй стороны</h3>
+<ul>
+<li><strong>Привычки.</strong> Графу проверяют до решения о знакомстве 92% женщин и 86% мужчин; 40% мужчин категорически против курящей партнёрши, 33% женщин считают курение мужчины поводом для отказа (<a href="https://daily.afisha.ru/news/109972-opros-40-muzhchin-ne-gotovy-znakomitsya-s-kuryaschey-devushkoy/" target="_blank" rel="noopener">опрос Mamba, 29.05.2026</a> <span class="tag t-fact">факт</span>; размер выборки не указан). Доля курящих в 2024 году: 18,6% по Минздраву, 25,5% по Росстату (<a href="https://t-j.ru/nosmoking-stat/" target="_blank" rel="noopener">T-Ж</a> <span class="tag t-fact">факт, по пересказу</span>).</li>
+<li><strong>Образ жизни.</strong> Для 59% он напрямую влияет на успех отношений, 73% ждут совпадения ритма жизни (<a href="https://snob.ru/news/rossiiane-perestali-vybirat-partnerov-po-vneshnosti/" target="_blank" rel="noopener">Twinby и Healthis через «Сноб», 17.02.2026</a> <span class="tag t-fact">факт</span>; размер выборки не указан).</li>
+<li><strong>Дети.</strong> Не собираются иметь детей 18% (2025) против 6% (2005) (<a href="https://ru.themoscowtimes.com/2025/05/20/dolya-ne-zhelayuschih-imet-detei-rossiyan-podskochila-vtroe-za-20-let-pravleniya-putina-a163884" target="_blank" rel="noopener">ВЦИОМ через The Moscow Times</a> <span class="tag t-fact">факт, по пересказу</span>). 56% считают семью семьёй только при наличии ребёнка (<a href="https://mel.fm/novosti/9870652-bolshinstvo-rossiyan-schitayut-chto-para-mozhet-schitatsya-semyey-tolko-pri-nalichii-rebenka" target="_blank" rel="noopener">«Вебер» через «Мел», январь 2024, N=1400</a> <span class="tag t-fact">факт</span>; онлайн-выборка, нерепрезентативна).</li>
+<li><strong>Честность анкет.</strong> Серьёзные отношения ищут 72%; неверно указывали возраст 23%, цель 17% (<a href="https://adindex.ru/news/researches/2025/02/13/330870.phtml" target="_blank" rel="noopener">Tiburon Research через AdIndex, 13.02.2025, N=1000</a> <span class="tag t-fact">факт</span>).</li>
+<li><strong>Что спрашивают российские конкуренты.</strong> VK Знакомства — алкоголь, отношение к детям и спорт (<a href="https://t-j.ru/vk-dating/" target="_blank" rel="noopener">T-Ж</a> <span class="tag t-fact">факт</span>); Mamba — 11 параметров, включая курение, алкоголь, детей и жильё <span class="tag t-fact">факт: запись экрана 08.10.2026</span>.</li>
+<li><strong>Международные данные.</strong> Для долгих отношений стоп-факторы действуют сильнее; человек отмечает в среднем 6 из 17 (<a href="https://www.psychologytoday.com/us/blog/close-encounters/201510/the-top-10-relationship-deal-breakers" target="_blank" rel="noopener">Jonason et al. 2015, N&gt;6500, через Psychology Today</a> <span class="tag t-fact">факт</span>; 2015 год, используется как устойчивое поведение).</li>
+</ul>
+<h3 id="tsena-otveta">Цена ответа</h3>
+<ul>
+<li>Чувствительные вопросы не повышают бросание анкеты (<a href="https://www.surveypractice.org/article/84347-breakoffs-in-an-hour-long-online-survey" target="_blank" rel="noopener">Emery 2023</a>, <a href="https://www.rti.org/publication/impact-question-topics-filter-question-formats-web-survey-breakoffs" target="_blank" rel="noopener">Chen 2022</a> <span class="tag t-fact">факт</span>). <strong>Чувствительность бьёт по пропускам и по честности, а не по CR.</strong></li>
+<li>Доход — лидер по неответам: 8,2% в GSS против &lt;1% по прочей демографии (<a href="https://doi.org/10.18148/srm/2024.v18i2.8117" target="_blank" rel="noopener">Jabkowski &amp; Piekut 2024</a> <span class="tag t-fact">факт, по аннотации</span>).</li>
+<li>Доля «prefer not to say» по детям, привычкам или религии в приложениях знакомств публично не найдена.</li>
+</ul>
+<h3 id="matritsa-polza-tsena">Матрица «польза × цена»</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Тема</th>
+<th>Польза для второй стороны</th>
+<th>Цена ответа</th>
+<th>Решение</th>
+<th>Видимость по умолчанию</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Курение</td>
+<td>Очень высокая</td>
+<td>Средняя</td>
+<td><strong>Брать</strong></td>
+<td>Видно, скрытие в один тап</td>
+</tr>
+<tr>
+<td>Алкоголь</td>
+<td>Средняя–высокая</td>
+<td>Средняя</td>
+<td><strong>Брать</strong> с градациями</td>
+<td>Видно</td>
+</tr>
+<tr>
+<td>Ритм дня (утро или вечер)</td>
+<td>Средняя–высокая: пары с похожим ритмом довольнее отношениями (<a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.00443/full" target="_blank" rel="noopener">Jocz et al. 2018</a> <span class="tag t-fact">факт</span>, 91 пара)</td>
+<td>Низкая</td>
+<td><strong>Брать</strong> первым вопросом</td>
+<td>Видно</td>
+</tr>
+<tr>
+<td>Спорт и активность</td>
+<td>Средняя (73% ждут совпадения ритма)</td>
+<td>Низкая</td>
+<td><strong>Брать</strong> как разгон</td>
+<td>Видно</td>
+</tr>
+<tr>
+<td>Есть ли дети</td>
+<td>Высокая</td>
+<td>Средняя</td>
+<td><strong>Брать</strong></td>
+<td>Видно</td>
+</tr>
+<tr>
+<td>Дети в будущем</td>
+<td>Очень высокая (18% не планируют)</td>
+<td>Средняя</td>
+<td><strong>Брать</strong> + «Пока не знаю»</td>
+<td>Видно</td>
+</tr>
+<tr>
+<td>С кем живу</td>
+<td>Средняя</td>
+<td>Высокая (безопасность)</td>
+<td>Брать</td>
+<td><strong>Скрыто, только для подбора</strong></td>
+</tr>
+<tr>
+<td>Готовность к переезду</td>
+<td>Средняя для серьёзных</td>
+<td>Низкая</td>
+<td>Брать</td>
+<td>Видно</td>
+</tr>
+<tr>
+<td>Питание</td>
+<td>Низкая</td>
+<td>Низкая</td>
+<td>Не брать: шум</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Сфера работы</td>
+<td>Средняя</td>
+<td>Длинный список</td>
+<td>Не брать в первую сессию</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Место работы и учёбы</td>
+<td>Средняя</td>
+<td>Ввод текста</td>
+<td>Не брать: +1–3 п.п. отвала</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Образование</td>
+<td>Средняя (67% ценят)</td>
+<td>Средняя</td>
+<td>Отложить: статусный фильтр</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Интересы</td>
+<td>Повод написать</td>
+<td>Низкая</td>
+<td>Не брать: закрыты промптами до фрагмента</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Рост</td>
+<td>Средняя</td>
+<td>Низкая</td>
+<td>Не брать: внешность, близко к «о себе»</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Доход</td>
+<td>Высокая для части</td>
+<td>Очень высокая</td>
+<td><strong>Отказаться</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Религия, политика, здоровье, ориентация, этничность</td>
+<td>Высокая для части</td>
+<td>Очень высокая, спецкатегории ПД</td>
+<td><strong>Отказаться</strong> в первой сессии</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="pravovye-ogranicheniya-kratko-ne-yuridicheskoe-z">Правовые ограничения (кратко, не юридическое заключение)</h3>
+<ul>
+<li><strong>Специальные категории ПД</strong> (национальность, политика, религия, здоровье, интимная жизнь) обрабатываются только с письменного согласия (<a href="https://legalacts.ru/doc/152_FZ-o-personalnyh-dannyh/glava-2/statja-10/" target="_blank" rel="noopener">152-ФЗ ст. 10</a> <span class="tag t-fact">факт</span>). С 01.09.2025 согласие оформляется отдельно от оферты (<a href="https://harant.ru/blog/internet-pravo/chto-izmenilos-s-1-sentyabrya-2025-goda-v-oblasti-personalnyh-dannyh-dlya-onlajn-biznesa/" target="_blank" rel="noopener">Гарант</a> <span class="tag t-fact">факт</span>).</li>
+<li><strong>Курение и алкоголь</strong> формулируем как образ жизни, а не как здоровье <span class="tag t-est">оценка</span>.</li>
+<li><strong>Вариант «не могу иметь детей» не предлагаем:</strong> это сведения о здоровье <span class="tag t-est">оценка</span>.</li>
+<li><strong>Автоподстановку из истории покупок не делаем</strong> («покупали детские вещи → есть дети»): цель обработки другая (<a href="https://www.consultant.ru/document/cons_doc_LAW_61801/" target="_blank" rel="noopener">152-ФЗ ст. 5</a>).</li>
+</ul>
+<h2 id="benchmarki-i-metod-otsenki-cr">Бенчмарки и метод оценки CR</h2>
+<h3 id="chto-est-publichno">Что есть публично</h3>
+<p><strong>Академические данные (лучшая методология):</strong></p>
+<ul>
+<li><a href="https://www.surveypractice.org/article/84347-breakoffs-in-an-hour-long-online-survey" target="_blank" rel="noopener">Emery et al. 2023</a>: N = 3 378, ≈ 300 вопросов, бросили 17,23%. Риск постоянен по длине анкеты, чувствительность незначима, со смартфона бросают в 2,6 раза чаще. Отсюда ≈ 0,06 п.п. на вопрос у мотивированных и ≈ 0,15 п.п. с мобильным множителем <span class="tag t-est">оценка-расчёт</span>.</li>
+<li><a href="https://www.rti.org/publication/impact-question-topics-filter-question-formats-web-survey-breakoffs" target="_blank" rel="noopener">Chen et al. 2022</a>: чаще всего бросают в начале анкеты и при смене темы; пропуск вопроса предвещает бросание <span class="tag t-fact">факт</span>.</li>
+<li><a href="https://ideas.repec.org/a/sae/somere/v54y2025i1p106-139.html" target="_blank" rel="noopener">Hadler 2025</a>: открытые вопросы повышают бросание <span class="tag t-fact">факт, без цифр</span>.</li>
+</ul>
+<p><strong>Данные вендоров:</strong></p>
+<ul>
+<li>Typeform 2025: формы из 10 вопросов завершают на 28% реже, чем из 3 (<a href="https://www.crazyegg.com/blog/form-statistics/" target="_blank" rel="noopener">через CrazyEgg</a> <span class="tag t-fact">факт, вторичный источник</span>). Это лид-формы с низким намерением.</li>
+<li><a href="https://adapty.io/blog/how-to-fix-your-onboarding-flow/" target="_blank" rel="noopener">Adapty, ноябрь 2025</a> <span class="tag t-fact">факт, данные вендора, без выборок</span>: убрали экран загрузки — +22% к пробным подпискам; потеря больше 20–30% на одном экране — красный флаг.</li>
+<li>Медиана длины онбординга 11 шагов (<a href="https://www.lazyweb.com/research/onboarding-flow-length-benchmark-steps.md" target="_blank" rel="noopener">Lazyweb, июль 2026, 129 флоу</a> <span class="tag t-fact">факт</span>).</li>
+<li>Знакомства: пошаговой доходимости онбординга не публикует никто. Ближайшее — вход в Mamba через Яндекс ID даёт +3% к конверсии регистрации относительно SMS (<a href="https://pay.yandex.ru/blog/cases/mamba" target="_blank" rel="noopener">Яндекс Пэй, 2024</a> <span class="tag t-fact">факт</span>). Аналог предзаполнения из основного аккаунта.</li>
+<li>Индикатор прогресса: свежих A/B нет; быстрый в начале помогает, медленный вредит (<a href="https://research.google/pubs/where-am-i-a-meta-analysis-of-experiments-on-the-effects-of-progress-indicators-for-web-surveys/" target="_blank" rel="noopener">Villar 2013</a> <span class="tag t-fact">факт</span>, используется как поведенческий эффект).</li>
+</ul>
+<p><strong>Надёжность.</strong> Ни один источник не сопоставим напрямую: это не знакомства, не Россия и не анкета внутри большого приложения. Поэтому уверенность в абсолютной CR низкая, в относительных выводах (что дороже, что дешевле) средняя <span class="tag t-est">оценка</span>.</p>
+<h3 id="metod">Метод</h3>
+<pre><code>Отвал экрана d = база + поправки (п.п.); CR экрана = 100 − d; сквозная = произведение CR экранов
+Три сценария: оптимистичный / базовый / пессимистичный
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Опт. / база / пес., п.п.</th>
+<th>Основание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>База: экран с тапами, 1–2 решения</td>
+<td>0,5 / 1,0 / 1,5</td>
+<td>Между Emery (≈ 0,15 на вопрос с мобильным множителем) и Typeform. Пользователь уже залогинен и пришёл сам <span class="tag t-asm">допущение</span></td>
+</tr>
+<tr>
+<td>Первый экран фрагмента</td>
+<td>+0,5 / 1,0 / 1,5</td>
+<td>Chen 2022: максимум бросаний в начале</td>
+</tr>
+<tr>
+<td>Вход в новую чувствительную тему</td>
+<td>+0,3 / 0,6 / 1,0</td>
+<td>Chen 2022: смена темы</td>
+</tr>
+<tr>
+<td>Каждое решение сверх двух</td>
+<td>+0,3 / 0,4 / 0,5</td>
+<td><span class="tag t-est">оценка</span></td>
+</tr>
+<tr>
+<td>Ввод текста</td>
+<td>+1 / 2 / 3</td>
+<td>Hadler 2025; медиана отвала на поле формы 1,6–3,3%</td>
+</tr>
+<tr>
+<td>Длинный список или поиск</td>
+<td>+0,3 / 0,5 / 0,7</td>
+<td><span class="tag t-est">оценка</span></td>
+</tr>
+<tr>
+<td>Есть «Не хочу говорить» или «Пропустить»</td>
+<td>−0,5 / 0,4 / 0,3</td>
+<td>Chen 2022: пропуск без легального выхода предвещает бросание</td>
+</tr>
+<tr>
+<td>Превью «так вас увидят»</td>
+<td>−0,3 / 0,15 / 0</td>
+<td><span class="tag t-est">оценка</span></td>
+</tr>
+<tr>
+<td>Экран без решения</td>
+<td>+0,3 / 0,6 / 1,0</td>
+<td>Adapty: удаление экрана загрузки +22%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Рядом с CR на каждом экране вторая метрика: <strong>доля содержательных ответов</strong> (не «пропустить» и не «не скажу»). Точной оценки не даём: данных о доле «prefer not to say» в знакомствах нет.</p>
+<h3 id="varianty-flou-po-metodu">Варианты флоу по методу</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Флоу</th>
+<th>Экраны (CR базового сценария)</th>
+<th>Сквозная до подписки: опт. / база / пес.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A «Стоп-факторы», 3</td>
+<td>Дети и планы 97,8 → Образ жизни 99,0 → Дом и переезд 98,8</td>
+<td>98,6 / 95,7 / 92,6</td>
+</tr>
+<tr>
+<td>B «Обмен», первая версия: 4 экрана</td>
+<td>Образ жизни 98,0 → Дети и планы 98,8 → Дом и переезд 98,8 → Что важно + превью 99,5</td>
+<td>98,4 / 95,2 / 91,5</td>
+</tr>
+<tr>
+<td><strong>B «Обмен», итоговая версия: 5 экранов (выбран)</strong></td>
+<td>Привычки и ритм дня 97,6 → Дети и планы 98,8 → Дом и переезд 98,8 → В чём важно совпадать 99,4 → Анкета готова 99,55</td>
+<td><strong>97,9 / 94,3 / 90,1</strong></td>
+</tr>
+<tr>
+<td>C «Сначала партнёр», 3</td>
+<td>97,0 → 97,8 → 98,0</td>
+<td>96,5 / 93,0 / <strong>89,3</strong></td>
+</tr>
+<tr>
+<td>D «Квиз с реакциями», 3 вопроса + 2 экрана-реакции</td>
+<td>98,0 → 99,4 → 98,8 → 99,4 → 98,8</td>
+<td>98,0 / 94,5 / 90,7</td>
+</tr>
+<tr>
+<td>E «Широкий набор тем», 5 (с вводом текста и длинным списком)</td>
+<td>97,6 → 98,9 → 97,4 → 98,8 → 98,8</td>
+<td>97,0 / 91,8 / <strong>86,6</strong></td>
+</tr>
+<tr>
+<td>B + обязательный голос</td>
+<td>—</td>
+<td>Метод неприменим: голос записывают ≈ 13%. Это обрыв воронки</td>
+</tr>
+</tbody>
+</table></div>
+<p>Вывод <span class="tag t-est">оценка</span>: цель 90% держат A, B и D во всех сценариях. Разница A и B внутри погрешности метода, поэтому выбор сделан по качеству анкеты и силе экрана подписки. Итоговая версия B с вопросом о ритме дня и экраном «Анкета готова» держит цель с запасом 0,1 п.п. в пессимистичном сценарии: любое новое решение или поле ввода на экранах 1–5 опустит его ниже 90%, шестой экран анкеты невозможен.</p>
+<h2 id="ekran-podpiski">Экран подписки</h2>
+<h3 id="chto-prodaem-kontrol-i-pervyy-shag">Что продаём: «Контроль и первый шаг»</h3>
+<p><strong>Рамка честности.</strong> Всё, что человек рассказал о себе, работает на него бесплатно и полностью. Платным может быть только то, что сервис делает сверх обещания анкеты, и только если за это не платят другие пользователи.</p>
+<ul>
+<li>Цена воспринимается как нечестная, когда фирма пользуется положением, а не покрывает издержки (<a href="https://www.jstor.org/stable/1806070" target="_blank" rel="noopener">Kahneman, Knetsch &amp; Thaler, 1986</a> <span class="tag t-fact">факт</span>). У нас опорная сделка задана самим флоу: «анкета в обмен на подбор». Продать подбор по анкете значит переписать сделку задним числом <span class="tag t-est">оценка</span>.</li>
+<li>Платное преимущество над другими снижает справедливость и покупки, платное удобство нет <span class="tag t-fact">факт: Wang et al., Information Systems Research, 2023</span>.</li>
+<li>Когда бесплатное становится платным, падают воспринимаемая справедливость и отношение к компании <span class="tag t-fact">факт: Cziehso, Schaefers &amp; Kukar-Kinney, Journal of Business Research, 2019</span>.</li>
+</ul>
+<p><strong>Бесплатно, и экран подписки говорит об этом в первых строках:</strong> подбор по всем ответам экранов 1–4 (совпадающие по отмеченным темам первыми), скрытие любого ответа, безопасность. Кого покажем первыми, человек видит ещё на экране 5.</p>
+<p><strong>Платно:</strong></p>
+<ol>
+<li><strong>Кому видна анкета.</strong> По умолчанию бесплатно «всем». С подпиской можно выбрать «только тем, кто мне понравился» или «всем, кроме знакомых по Авито». Выбор предлагают ещё на экране 5, в шторке «Изменить», платные режимы помечены «С подпиской» до цены; выбирать не обязательно.</li>
+<li><strong>Первое слово.</strong> Сообщение вместе с «Нравится», его видят до того, как вы понравились друг другу. До 3 в день, чтобы не было потока непрошеных сообщений.</li>
+<li><strong>Кому вы понравились.</strong> Покажем, как только это случится.</li>
+</ol>
+<p><strong>Почему это нужно уже в первой сессии.</strong> Анкету увидят сразу после «Не сейчас». 56% пользователей Mamba хотя бы раз встречали коллег в приложениях знакомств, 79% женщин и 52% мужчин такие совпадения игнорируют, чтобы избежать неловкости <span class="tag t-fact">факт: опрос Mamba в пересказе MenToday, 17.09.2026</span>. Приватность и сообщение до взаимности уже продают Mamba, Bumble, VK Знакомства, Teamo и Tinder <span class="tag t-fact">факт</span>; скрытия от контактов по маркетплейсу нет ни у кого <span class="tag t-est">оценка</span>. На коридорных тестах готовность платить за скрытие анкеты от знакомых и от всех, кроме тех, кто понравился, предварительно подтвердилась <span class="tag t-fact">факт: коридорные тесты, малая выборка</span>; дальше её нужно подтверждать количественно.</p>
+<p><strong>Текст экрана в прототипе.</strong></p>
+<p>Верх экрана зависит от выбора на экране 5, поэтому у экрана два состояния.</p>
+<ul>
+<li><strong>Выбран режим с подпиской:</strong> лиловая плашка «Вы выбрали: анкету увидят только те, кто вам понравился. Это работает с подпиской»; под заголовком строка «Подбор по вашим ответам остаётся бесплатным»; первый пункт про выбранный режим («Анкета только для тех, кто вам понравился. Включим сразу после оплаты»); под «Не сейчас» мелко «Без подписки анкету увидят все».</li>
+<li><strong>Видят все:</strong> серая строка над заголовком «Анкета готова. Подбор по вашим ответам бесплатный»; первый пункт «Сами решаете, кому видна анкета. Сейчас её видят все. С подпиской можно показывать её только тем, кто вам понравился, или скрыть от знакомых по Авито».</li>
+<li>Общее: заголовок «Знакомьтесь на своих условиях»; пункты «Первое слово за вами» (до 3 сообщений в день) и «Кому вы понравились»; тарифы неделя 299 ₽ / месяц 599 ₽ (выделен) / 3 месяца 1 190 ₽.</li>
+<li>Кнопка: «Подключить за 599 ₽ в месяц». Отказ: «Не сейчас», ведёт в ленту, где совпадающие по отмеченным темам уже стоят первыми.</li>
+<li>Мелкий текст: подписка продлевается автоматически, пока вы её не отключите, отключить можно в профиле в любой момент, за день до списания придёт напоминание. Оплата через Авито Кошелёк или картой.</li>
+</ul>
+<h3 id="rassmotrennye-varianty">Рассмотренные варианты</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Вариант</th>
+<th>Решение</th>
+<th>Почему</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Контроль и приватность + первое сообщение</strong></td>
+<td><strong>Выбран</strong></td>
+<td>Ядро обещания анкеты не трогаем; ценность видна в первой сессии; спрос на приватность в РФ</td>
+</tr>
+<tr>
+<td>Строгие фильтры за деньги: «только те, кто совпадает по отмеченным пунктам»</td>
+<td><strong>Рассмотрен и отклонён</strong></td>
+<td>Продаёт ядро обещания экрана 4: «учтём в подборе» превращается в «учтём за деньги». На старте сервиса строгий фильтр по трём пунктам даёт почти пустую ленту, и платящий получает меньше бесплатного <span class="tag t-est">оценка</span></td>
+</tr>
+<tr>
+<td>Параметры сверх анкеты (рост, образование, вера) с правилом взаимности</td>
+<td>Запасной</td>
+<td>Отраслевой стандарт (Hinge, Mamba, Bumble); берём, если количественная проверка не подтвердит готовность платить за приватность</td>
+</tr>
+<tr>
+<td>Скорость и видимость (приоритет показа)</td>
+<td>Отклонён</td>
+<td>За это платят бесплатные пользователи своей видимостью</td>
+</tr>
+<tr>
+<td>Подборка дня с объяснением совпадения</td>
+<td>Отклонён</td>
+<td>Мала на старте; объяснение совпадения лучше отдать бесплатно</td>
+</tr>
+<tr>
+<td>Не продавать в первой сессии, пробный период</td>
+<td>Отклонён</td>
+<td>Не выполняет требование задания; пробного периода нет: либо бесплатное ядро, либо платная подписка</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="platnye-funktsii-i-tarify-konkurentov-2025-2026">Платные функции и тарифы конкурентов, 2025–2026</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Сервис</th>
+<th>Что продаёт</th>
+<th>Периоды и цены</th>
+<th>Как показана скидка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mamba VIP</td>
+<td>Кому вы понравились, чат до взаимности, гости, инкогнито, расширенный поиск</td>
+<td>7 дней 1 490 ₽ / 30 дней 2 990 ₽ / 90 дней 6 990 ₽ <span class="tag t-fact">факт: запись экрана, 08.10.2026</span></td>
+<td>Зачёркнутые цены, «You save 53% / 61%»</td>
+</tr>
+<tr>
+<td>VK Знакомства Premium</td>
+<td>Расширенные фильтры, скрыть возраст и расстояние, больше отметок</td>
+<td>1 мес 599 ₽ / 3 мес 999 ₽ / 6 мес 1 490 ₽ (<a href="https://t-j.ru/vk-dating/" target="_blank" rel="noopener">T-Ж</a> <span class="tag t-fact">факт</span>)</td>
+<td>Не найдено</td>
+</tr>
+<tr>
+<td>Twinby</td>
+<td>Кому вы понравились, отмена решения</td>
+<td>Неделя 539 ₽ / месяц 895 ₽ / 3 мес 1 690 ₽ <span class="tag t-fact">факт: App Store, 2.4.0</span></td>
+<td>Не найдено</td>
+</tr>
+<tr>
+<td>Teamo Премиум</td>
+<td>Сообщения без взаимности, гости, расширенный подбор</td>
+<td>7 дней 349 ₽ / 30 дней 899 ₽ / 90 дней 1 290 ₽ <span class="tag t-fact">факт: App Store, 6.19.7</span></td>
+<td>Не найдено</td>
+</tr>
+<tr>
+<td>Hinge+ / HingeX</td>
+<td>Расширенные предпочтения, все отметки сразу; приоритет показа</td>
+<td>Неделя / месяц / 3 / 6 месяцев, выделены 3 месяца <span class="tag t-fact">факт: Mobbin</span></td>
+<td>«Save 53% / 69%», цена за неделю</td>
+</tr>
+<tr>
+<td>Bumble Premium</td>
+<td>Кому вы понравились, расширенные фильтры, «видят только те, кого отметил я»</td>
+<td>Неделя / месяц / 3 месяца <span class="tag t-fact">факт: Mobbin</span></td>
+<td>«Save 51%»</td>
+</tr>
+<tr>
+<td>Tinder Gold</td>
+<td>Кому вы понравились</td>
+<td>Неделя / месяц / 6 месяцев <span class="tag t-fact">факт: Mobbin</span></td>
+<td>«Save 51% / 75%»</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="nashi-tarify-dopuschenie-dlya-prototipa">Наши тарифы: допущение для прототипа</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Неделя</th>
+<th><strong>Месяц (выделен)</strong></th>
+<th>3 месяца</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>299 ₽</td>
+<td><strong>599 ₽</strong> (≈ 139 ₽ в неделю)</td>
+<td>1 190 ₽ (≈ 397 ₽ в месяц)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Месяц 599 ₽</strong> — ровно VK Знакомства, ниже Twinby (895 ₽) и Teamo (899 ₽) <span class="tag t-est">оценка</span>.</li>
+<li><strong>Неделя 299 ₽</strong> как недорогая проба и якорь: месяц выглядит вдвое выгоднее без зачёркнутых цен. Недельные подписки дают почти половину выручки в приложениях, но 65% из них заканчиваются в первые 30 дней (Adapty 2025 <span class="tag t-fact">факт, по пересказу</span>); поэтому неделю не выделяем.</li>
+<li><strong>3 месяца 1 190 ₽</strong> для настроенных серьёзно: у Hinge и Coffee Meets Bagel по умолчанию выделены 3 месяца <span class="tag t-fact">факт: Mobbin</span>. Ниже порога 1 200 ₽.</li>
+<li><strong>Без пробного периода, зачёркнутых цен, таймеров и второго предложения после отказа.</strong> На старте сервиса доверие дороже.</li>
+<li><strong>Автопродление.</strong> По 376-ФЗ (в силе с 01.03.2026) после отказа от карты списывать периодические платежи нельзя, отказ принимается в электронной форме <span class="tag t-fact">факт</span>. Напоминание за день до списания закон не требует, добавляем ради доверия <span class="tag t-est">оценка</span>.</li>
+<li><strong>Оплата.</strong> Карты РФ в App Store и Google Play не принимаются <span class="tag t-fact">факт</span>, поэтому оплата внутри приложения Авито (кошелёк или карта) <span class="tag t-asm">допущение</span>.</li>
+</ul>
+<h3 id="dannye-o-konversii-ekrana-podpiski">Данные о конверсии экрана подписки</h3>
+<ul>
+<li>Экран подписки в онбординге конвертирует просмотр в пробную подписку или покупку: 9,07% у одностраничного, 12,41% у многостраничного (<a href="https://superwall.com/blog/new-postmulti-page-onboarding-paywalls-convert-37-better-than-single-page-heres-why" target="_blank" rel="noopener">Superwall, 2026, 40+ млн показов</a> <span class="tag t-fact">факт</span>; все категории, не знакомства).</li>
+<li>Мягкий экран конвертирует просмотр в оплату почти на 50% лучше жёсткого (<a href="https://adapty.io/state-of-in-app-subscriptions/" target="_blank" rel="noopener">Adapty 2026</a> <span class="tag t-fact">факт</span>); жёсткий даёт 10,7% против 2,1% в расчёте на установку (<a href="https://www.revenuecat.com/state-of-subscription-apps" target="_blank" rel="noopener">RevenueCat 2026</a> <span class="tag t-fact">факт</span>). Знаменатели разные, противоречия нет.</li>
+<li>Аудитория серьёзных отношений платит больше: выручка на платящего у Hinge $33,11 против $17,90 у Tinder (<a href="https://www.sec.gov/Archives/edgar/data/0000891103/000089110326000128/mtch8-k20260804ex991.htm" target="_blank" rel="noopener">Match Group Q2 2026</a> <span class="tag t-fact">факт</span>).</li>
+<li>Рынок РФ: 6,2 млрд ₽ в 2025 году (+25%), на VK Знакомства, Mamba и Twinby приходится 75% (<a href="https://www.kommersant.ru/doc/8816666" target="_blank" rel="noopener">«Коммерсантъ»</a> <span class="tag t-fact">факт</span>). Доля платящих в РФ не найдена.</li>
+<li>Для CR задания проход экрана подписки считается 100% по построению; конверсию в оплату точной цифрой не даём.</li>
+</ul>
+<h2 id="kachestvo-zapolneniya">Качество заполнения</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Механика</th>
+<th>Данные об эффекте</th>
+<th>Где видно</th>
+<th>На нашем экране</th>
+<th>Берём</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«Ответить и скрыть»</td>
+<td>Эффекта не публиковали</td>
+<td>Hinge «Visible on profile», включено по умолчанию</td>
+<td>Переключатель «Видно в анкете» на блоке; для «с кем живу» выключен; «Не хочу говорить» выключает его сам</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Взаимность</td>
+<td>Эффекта не публиковали</td>
+<td>Bumble, Mamba</td>
+<td>На экране 4 отметить можно только то, на что ответили сами; неотвеченное серым с «Ответить»</td>
+<td>Да, ядро флоу</td>
+</tr>
+<tr>
+<td>Превью «как вас видят»</td>
+<td>Данных нет</td>
+<td>Редакторы профиля Hinge и Bumble</td>
+<td>Карточка «Так вас увидят» на экране 5</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Лимит выбора</td>
+<td>Эффекта не публиковали</td>
+<td>Bumble: до 5 интересов (<a href="https://www.globaldatinginsights.com/news/bumble-adds-new-profile-interest-badges/" target="_blank" rel="noopener">GDI</a> <span class="tag t-fact">факт</span>)</td>
+<td>На экране 4 лимита нет: отметки меняют порядок ленты, а не фильтруют её</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Без предвыбранных ответов</td>
+<td>Предвыбор сдвигает выбор на 19–28 п.п. (<a href="https://www.netspar.nl/kennisplein/default-as-advice-a-survey-experiment-on-preselecting-pension-choices-and-the-endorsement-effect/" target="_blank" rel="noopener">Netspar, N=1076</a> <span class="tag t-fact">факт, по аннотации</span>)</td>
+<td>—</td>
+<td>Ничего не предвыбрано</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>«Не хочу говорить» вместо «Пропустить»</td>
+<td>Выбирают редко; эффект на бросание не доказан</td>
+<td>Hinge, Mamba</td>
+<td>Последний вариант в ритме дня, курении, алкоголе и обоих вопросах о детях; сам скрывает ответ</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Объяснение пользы вопроса</td>
+<td>63% пользователей Hinge не знают, что писать в профиле (<a href="https://hinge.co/press/prompt-feedback" target="_blank" rel="noopener">Hinge, 15.01.2025</a> <span class="tag t-fact">факт</span>)</td>
+<td>Почти ни у кого</td>
+<td>Подзаголовок «зачем» на каждом экране</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Видимое пустое поле</td>
+<td>Данных нет</td>
+<td>—</td>
+<td>В первой сессии пустое поле стыдит</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Индикатор полноты в процентах</td>
+<td>Данных нет</td>
+<td>Mamba</td>
+<td>Превью показывает полноту честнее</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>«Заполненные показываем чаще»</td>
+<td>Данных нет</td>
+<td>—</td>
+<td>Стимул отвечать наугад</td>
+<td>Нет</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="golos-i-video">Голос и видео</h2>
+<ul>
+<li>Hinge: голосовые промпты до 30 секунд с 2021 года, видео с 2022-го; в онбординге запись необязательна <span class="tag t-fact">факт: Mobbin</span>. Bumble: аудио и видео с 2022 года. VK Знакомства: видео в анкете; голосовые в чатах только после взаимности (<a href="https://t-j.ru/vk-dating/" target="_blank" rel="noopener">T-Ж</a> <span class="tag t-fact">факт</span>).</li>
+<li>Эффект известен только по заявлениям Hinge, методология не раскрыта: голосовой промпт даёт вдвое больше взаимных отметок (<a href="https://www.goodmorningamerica.com/living/story/hinge-explores-audio-side-online-dating-82838096" target="_blank" rel="noopener">Good Morning America, 13.02.2022</a> <span class="tag t-fact">факт</span>); голос записали ≈ 13% новых пользователей <span class="tag t-fact">факт, по пересказу</span>.</li>
+<li><strong>Решение:</strong> во флоу не включаем. Обязательная запись обрывает воронку, необязательная — лишний экран, запрос микрофона и неловкость записи на людях <span class="tag t-est">оценка</span>. В прототипе голос показан как необязательное состояние экрана 5: неактивный блок «Голосовой ответ · скоро».</li>
+</ul>
+<h2 id="gipotezy">Гипотезы</h2>
+<p>Формула: «если сделаем X, пользователь сможет Y, что приведёт к Z». ICE — способ упорядочить гипотезы, а не измерение <span class="tag t-est">оценка</span>.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Гипотеза</th>
+<th>Метрика</th>
+<th>Контр-метрика</th>
+<th>ICE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H3</td>
+<td>Если каждый вопрос объясняет выгоду («подберём людей с похожими взглядами на детей»), человек увидит смысл ответа → выше доля ответов</td>
+<td>Доля ответов против контроля</td>
+<td>Время на экране</td>
+<td>420</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>Если развести ответ и видимость, человек честно ответит на чувствительное, не раскрываясь → выше доля содержательных ответов при той же CR</td>
+<td>Доля содержательных ответов на стоп-факторах</td>
+<td>Доля скрытых среди ответивших</td>
+<td>392</td>
+</tr>
+<tr>
+<td>H9</td>
+<td>Если объединить ритм дня и 3 привычки на одном экране, → меньше экранов при той же полноте</td>
+<td>Время на фрагмент, CR</td>
+<td>Доля частично заполненных блоков</td>
+<td>378</td>
+</tr>
+<tr>
+<td>H7</td>
+<td>Если экран подписки мягкий с «Не сейчас», человек дойдёт до ленты → нет удара по возврату на следующий день и по числу анкет на витрине</td>
+<td>Доля дошедших до ленты, D1</td>
+<td>Выручка на пользователя</td>
+<td>324</td>
+</tr>
+<tr>
+<td>H10</td>
+<td>Если дети и планы на одном экране с условной веткой, человек не ответит на лишнее → выше CR</td>
+<td>Время на экране</td>
+<td>Доля «пока не знаю»</td>
+<td>315</td>
+</tr>
+<tr>
+<td>H11</td>
+<td>Если формулировки нейтральные и с градациями («иногда», «бросаю»), → меньше «не скажу» на привычках</td>
+<td>Доля «не скажу»</td>
+<td>—</td>
+<td>300</td>
+</tr>
+<tr>
+<td>H6</td>
+<td>Если экран 5 показывает, кого покажем первыми, а экран подписки подтверждает, что подбор по ответам бесплатный, и продаёт только сверх обещанного, человек не почувствует обмана → выше просмотр → оплата, чем у экрана со строгим фильтром</td>
+<td>Просмотр → оплата; ответ на коридорном тесте «у меня что-то забрали?»</td>
+<td>Отмены автопродления, D7</td>
+<td>280</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>Если на экране 4 человек отмечает темы, в которых ему важно совпадать, он скажет, кого ищет, без отдельного допроса → выше качество подбора</td>
+<td>Доля отметивших хотя бы 1 пункт</td>
+<td>Доля пустых лент</td>
+<td>240</td>
+</tr>
+<tr>
+<td>H12</td>
+<td>Если «с кем живу» скрыто по умолчанию, человек ответит без риска для безопасности → выше доля ответов</td>
+<td>Доля ответов на блок</td>
+<td>Доля тех, кто сам открыл видимость</td>
+<td>240</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>Если учитывать пункт можно, только ответив на него о себе, → выше доля ответов на экранах 1–3</td>
+<td>Доля ответов с правилом против без</td>
+<td>Ответы наугад (правки через неделю)</td>
+<td>180</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Если на стоп-факторах вместо «Пропустить» стоит «Не хочу говорить», отказ станет осознанным → CR не ниже, пустые ответы различимы</td>
+<td>CR экрана, доля «не скажу»</td>
+<td>Жалобы «анкета не соответствует»</td>
+<td>180</td>
+</tr>
+<tr>
+<td>H8</td>
+<td>Если экран 5 «Анкета готова» показывает собранную анкету и кого покажем первыми, а выбор видимости не обязателен, человек увидит результат вложения и придёт к подписке, понимая, что бесплатно, а что платно → CR экрана 5 не ниже 99%, выше просмотр → «Подключить»</td>
+<td>CR экрана 5, доля открывших «Изменить»</td>
+<td>Возвраты на экран 4, обращения «я не знал, что это платно»</td>
+<td>120</td>
+</tr>
+</tbody>
+</table></div>
+<p>Отклонены: социальное доказательство «12 человек рядом совпадают» без реальных данных (это обман) и обязательный голос (обрыв воронки).</p>
+<h2 id="flou-obmen-ekrany">Флоу «Обмен»: экраны</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Экран</th>
+<th>Содержание</th>
+<th>Обязательность</th>
+<th>Видимость</th>
+<th>CR, база (диапазон)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Образ жизни</td>
+<td>«Расскажите о своих привычках»: ритм дня, спорт, курение, алкоголь. Подзаголовок: «Подберём людей с похожими привычками. Любой ответ можно скрыть»</td>
+<td>Необязательный, «Не хочу говорить» в ритме дня, курении и алкоголе</td>
+<td>Видно, переключатель на блоке; «Не хочу говорить» скрывает ответ сам</td>
+<td>97,6 (96,3–98,9)</td>
+</tr>
+<tr>
+<td>2 Дети и планы</td>
+<td>Есть ли дети (с вариантами «живут со мной» и «живут отдельно»); «Дети в будущем» с «Пока не знаю»</td>
+<td>Необязательный, «Не хочу говорить» в обоих вопросах</td>
+<td>Видно; «Не хочу говорить» скрывает ответ сам</td>
+<td>98,8 (97,8–99,7)</td>
+</tr>
+<tr>
+<td>3 Дом и переезд</td>
+<td>С кем живу, готовность к переезду</td>
+<td>Необязательный</td>
+<td>«С кем живу» скрыто, только для подбора</td>
+<td>98,8 (97,8–99,7)</td>
+</tr>
+<tr>
+<td>4 В чём вам важно совпадать</td>
+<td>Шесть тем, отметить сколько угодно; людей, совпадающих в отмеченных темах, покажем раньше. Отметить можно только то, на что ответили сами; неотвеченное серым с «Ответить»</td>
+<td>Необязательный</td>
+<td>Отметки никому не видны</td>
+<td>99,4 (98,8–99,8)</td>
+</tr>
+<tr>
+<td>5 Анкета готова</td>
+<td>«Так вас увидят» (карточка из видимых ответов), «Кого покажем первыми» (фраза из отмеченных тем), «Кто увидит анкету: сейчас её увидят все, в том числе знакомые по Авито · Изменить»</td>
+<td>Ничего не требует, «Далее» активна сразу</td>
+<td>Режим «Всем»; платные режимы включаются после оплаты</td>
+<td>99,55 (99,0–99,8)</td>
+</tr>
+<tr>
+<td>Подписка</td>
+<td>«Контроль и первый шаг»; верх экрана по выбору на экране 5; бесплатный подбор в первых строках; «Не сейчас»</td>
+<td>—</td>
+<td>—</td>
+<td>Проход ≈ 100%</td>
+</tr>
+<tr>
+<td><strong>Сквозная до экрана подписки</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>94,3 (90,1–97,9)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Плюсы:</strong> начинается с лёгкой темы; закрывает «кого ищу» без повтора цели; экран подписки вырастает из ответов; двусторонний подбор.</li>
+<li><strong>Минусы и риски:</strong> запас CR в пессимистичном сценарии всего 0,1 п.п.; экраны 4 и 5 сложнее в сборке; формулировки предпочтений могут звучать как отсев людей; эффект взаимности никем не измерен. Это проверяем на коридорных тестах.</li>
+<li><strong>Когда переключиться на «Стоп-факторы»:</strong> если экран 4 окажется непонятным или «оценочным» для большинства участников тестов.</li>
+</ul>
+<h3 id="pochemu-poyavilsya-ekran-5-anketa-gotova">Почему появился экран 5 «Анкета готова»</h3>
+<p>В первой версии после экрана 4 сразу шёл экран подписки, и это давало три проблемы: анкета обрывалась без финала; строка «это бесплатно» на подписке не связывалась с ответами; разговор менялся с «я и мои предпочтения» на «контроль и приватность» без перехода. Экран 5 работает мостом: человек видит, как его увидят другие и кого ему покажем первыми, а последняя строка продолжает разговор о нём самом: кто увидит анкету. Платные режимы помечены до цены, выбор не обязателен, поэтому экран почти не стоит CR <span class="tag t-est">оценка</span>.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Вариант финала</th>
+<th>Сквозная CR, пес. <span class="tag t-est">оценка</span></th>
+<th>Решение и причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Экран 5 «Анкета готова», выбор видимости в шторке «Изменить»</strong></td>
+<td>90,6</td>
+<td><strong>Выбран.</strong> Снимает все три проблемы в естественном порядке: «рассказал о себе» → «вот результат» → «кто это увидит» → «что даёт подписка». Не меняет утверждённое предложение подписки</td>
+</tr>
+<tr>
+<td>Тот же экран 5, выбор видимости вопросом прямо на экране</td>
+<td>89,5</td>
+<td>Отклонён: ниже цели 90%; платные варианты внутри анкеты выглядят ловушкой</td>
+</tr>
+<tr>
+<td>Экран 5 с обязательным выбором («Далее» неактивна до выбора)</td>
+<td>89,2</td>
+<td>Отклонён: ниже цели 90%; экран подписки и так видят все дошедшие</td>
+</tr>
+<tr>
+<td>Мост без нового экрана: «Завершить анкету» на экране 4 и блок «Анкета готова» на подписке</td>
+<td>91,5</td>
+<td>Отклонён: финал живёт на экране с ценой, проблемы сняты лишь частично. Был запасным вариантом</td>
+</tr>
+<tr>
+<td>Продавать ещё темы для совпадения</td>
+<td>91,5</td>
+<td>Отклонён: граница «бесплатно / платно» по темам выглядит произвольной и пересматривает ценность подписки</td>
+</tr>
+<tr>
+<td>Продавать первое слово по общему</td>
+<td>91,5</td>
+<td>Отклонён: не снимает обрыв анкеты; сообщения до взаимности бьют по второй стороне</td>
+</tr>
+</tbody>
+</table></div>
+<p>CR в таблице посчитаны до добавления вопроса о ритме дня; с ним выбранный вариант даёт 90,1% в пессимистичном сценарии.</p>
+<h2 id="plan-proverki">План проверки</h2>
+<h3 id="sinteticheskiy-progon-bystryy-test-ne-dokazatels">Синтетический прогон (быстрый тест, не доказательство)</h3>
+<p>Панель из 30–40 персон: пол × возраст (25–34 / 35–45) × есть ли дети × отношение к приватности × опыт знакомств в приложениях, плюс несколько «трудных» персон (есть ребёнок после развода; бросаю курить; живу с родителями; не хочу детей). На каждом экране персона отвечает, что сделает, что скроет и почему, что непонятно. Ограничения: модели угодливы, не платят временем и неловкостью, абсолютную CR не оценивают (<a href="https://www.nngroup.com/articles/synthetic-users/" target="_blank" rel="noopener">NN/g</a> <span class="tag t-fact">факт</span>). Если формулировка путает модель, она, вероятно, путает и часть людей; обратное неверно <span class="tag t-asm">допущение</span>.</p>
+<h3 id="koridornye-testy-na-3-5-lyudyah">Коридорные тесты на 3–5 людях</h3>
+<ul>
+<li><strong>Кто:</strong> 25–45 лет, не в отношениях, готовы к долгим отношениям; не близкие друзья автора.</li>
+<li><strong>Сценарий:</strong> «Вы решили попробовать знакомства в приложении, хотите серьёзных отношений, анкету "о себе" уже заполнили. Пройдите дальше так, как сделали бы для себя», с размышлением вслух.</li>
+<li><strong>На экране подписки:</strong> 5-секундный тест «что даёт подписка, сколько стоит, что будет при отказе»; вопрос «что вы получите, если нажмёте "Не сейчас"?» (провал, если ответ «ничего»); два экрана рядом, выбранный и со строгим фильтром: «за какой заплатили бы» и «глядя на какой, вы чувствуете, что у вас что-то забрали?»; насколько важно, чтобы анкету не увидели коллеги и соседи (1–5).</li>
+<li><strong>Что наблюдаем:</strong> паузы дольше 5 секунд, «не скажу», переключатели видимости, возвраты, реакцию на экран 4 и на строку «Кто увидит анкету» на экране 5.</li>
+<li><strong>Что тест может и не может.</strong> Может найти места, где спотыкаются: 5 человек находят большую часть проблем юзабилити (<a href="https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/" target="_blank" rel="noopener">NN/g</a> <span class="tag t-fact">факт</span>). Не может измерить CR: 8 из 8 дошедших дают нижнюю границу 95% доверительного интервала ≈ 70% (<a href="https://measuringu.com/completion-rates/" target="_blank" rel="noopener">MeasuringU</a> <span class="tag t-fact">факт</span>).</li>
+<li><strong>Как результаты попадут в прототип:</strong> правятся тексты и состояния экранов, шестой экран анкеты не добавляется. Если экран 4 провалится у большинства, переключаемся на флоу «Стоп-факторы».</li>
+</ul>
+<h2 id="ogranicheniya-i-chto-ne-udalos">Ограничения и что не удалось</h2>
+<ul>
+<li>Пошаговой доходимости онбордингов знакомств в открытых источниках нет; CR — оценка по смежным данным.</li>
+<li>Российских сервисов нет в Mobbin; по ним только подтверждённое в магазинах приложений и статьях.</li>
+<li>Mobbin не показывает дату съёмки; свежесть экранов оценена по признакам интерфейса.</li>
+<li>Часть страниц не открывалась; такие цифры помечены «по пересказу» или «по аннотации».</li>
+<li>Готовность платить за скрытие анкеты от знакомых и от всех, кроме тех, кто понравился, на коридорных тестах подтвердилась только предварительно: на малой выборке это не измерение. Следующий шаг — количественная проверка, например конверсия экрана подписки в «Подключить» по двум состояниям экрана и доля выбравших платный режим на экране 5.</li>
+<li>Техническая реализуемость скрытия «от тех, с кем общались на Авито» и оплаты через кошелёк Авито не проверялась <span class="tag t-asm">допущение</span>.</li>
+</ul>
+<a class="totop" href="#top">↑ Наверх</a>
+</main></div>
+<footer>Ирина Живова, 11 октября 2026. Адрес страницы: <a href="https://zhivovairinahubus.github.io/dating-first-session/" target="_blank" rel="noopener">https://zhivovairinahubus.github.io/dating-first-session/</a></footer>
+<script>
+if (window.matchMedia('(max-width:900px)').matches) document.getElementById('tocd').removeAttribute('open');
+document.querySelectorAll('nav.toc a').forEach(function(a){a.addEventListener('click',function(){
+ if (window.matchMedia('(max-width:900px)').matches) document.getElementById('tocd').removeAttribute('open');});});
+</script>
+</body></html>
