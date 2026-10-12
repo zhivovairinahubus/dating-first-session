@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Первая сессия знакомств</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f7f7f5}
+a{color:#7a3fd6}a:hover{color:#3a2266}
+button{font-family:inherit}
+button:focus-visible{outline:2px solid #7a3fd6;outline-offset:2px}
+.layout{display:flex;flex-wrap:wrap;gap:24px;padding:24px 16px 80px;align-items:flex-start;justify-content:center;max-width:1440px;margin:0 auto;box-sizing:border-box}
+.mapcol{order:1;flex:0 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.phonecol{order:2;flex:0 0 375px;min-width:0;display:flex;justify-content:center}
+.side{order:3;flex:0 1 340px;min-width:0;display:flex;flex-direction:column;gap:16px}
+#appbody>*,.sheetbody>*{flex-shrink:0}
+@media (max-width:1180px){
+  .mapcol{order:4;flex:1 1 100%;max-width:739px}
+}
+@media (max-width:820px){
+  .topsub{display:none}
+}
+@media (max-width:520px){
+  .layout{padding:0 0 80px;gap:12px}
+  .phonecol{flex:1 1 100%}
+  .phone-test{border:none !important;border-radius:0 !important;max-width:none !important;height:calc(100svh - 100px) !important}
+  .side,.mapcol{flex:1 1 100%;max-width:none;padding:0 16px;box-sizing:border-box}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #f7f7f5; font-family: 'Golos Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #141414; font-size: 14px; line-height: 1.4">
+
+  <header style="display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; padding: 12px 16px; background: #ffffff; border-bottom: 1px solid #ebeae8; box-sizing: border-box">
+    <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+      <h1 style="margin: 0; font-size: 16px; line-height: 1.3; font-weight: 600">Первая сессия знакомств: 5 экранов анкеты и подписка</h1>
+      <div class="topsub" style="font-size: 12px; color: #757575">Концепт для тестового задания Bootcamp Авито · Ирина Живова</div>
+    </div>
+    <button onClick="{{toggleTest}}" aria-pressed="{{testAttr}}" style="{{testStyle}}">{{testLabel}}</button>
+  </header>
+
+  <main class="layout">
+
+    <sc-if value="{{showMeta}}" hint-placeholder-val="{{ true }}">
+      <div class="mapcol">
+        <nav aria-label="Карта экранов" style="background: #ffffff; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+          <h2 style="margin: 0; font-size: 16px; font-weight: 600">Карта экранов</h2>
+          <div style="font-size: 13px; line-height: 1.5"><b style="font-weight: 600">До фрагмента:</b> вход, пол, гео, уведомления, «Пара слов о себе». Поэтому прогресс начинается с 60%</div>
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <sc-for list="{{mapItems}}" as="m" hint-placeholder-count="6">
+              <button onClick="{{m.click}}" aria-current="{{m.current}}" style="{{m.style}}">
+                <span style="font-size: 14px; font-weight: 500">{{m.label}}</span>
+                <span style="font-size: 12px; color: #757575">{{m.d}}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #ebeae8; padding-top: 14px; font-size: 13px; line-height: 1.5">
+            <div><b style="font-weight: 600">Доходимость до экрана подписки:</b> около 93%, экспертная оценка. В плохом сценарии около 89%, запаса нет. Рычаги: убрать спорт с экрана 2, затем объединить итог с экраном 4</div>
+            <div><b style="font-weight: 600">Качество:</b> из дошедших до подписки около 80% приходят с анкетой от 4 видимых ответов из 6, в плохом сценарии около 70%. Следим за долей дошедших с 0–1 ответом. Экспертная оценка</div>
+            <div><b style="font-weight: 600">Метод:</b> отвал экрана = около 1 п.п. базы + первый экран, лишние решения, чувствительная тема, экран без вопроса − возможность не отвечать</div>
+            <div><b style="font-weight: 600">Не спрашиваем здесь:</b> работа, образование, интересы, жилье. Добираем в профиле, чтобы не терять доходимость</div>
+          </div>
+          <div style="font-size: 12px; color: #757575">Концепт для тестового задания Bootcamp Авито · Ирина Живова</div>
+        </nav>
+      </div>
+    </sc-if>
+
+    <section class="phonecol" aria-label="Экран телефона">
+      <div class="{{phoneClass}}" onKeyDown="{{onKey}}" style="position: relative; width: 100%; max-width: 375px; height: 780px; box-sizing: border-box; border: 10px solid #141414; border-radius: 46px; background: #ffffff; overflow: hidden; display: flex; flex-direction: column">
+
+        <sc-if value="{{hasTop}}" hint-placeholder-val="{{ true }}">
+          <div style="flex: none; display: flex; flex-direction: column; gap: 4px; padding: 8px 16px 4px 4px">
+            <div style="display: flex; align-items: center; gap: 8px">
+              <button onClick="{{back}}" disabled="{{backDisabled}}" aria-label="Назад" style="{{backStyle}}">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{backColor}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <sc-if value="{{hasPct}}" hint-placeholder-val="{{ true }}">
+                <div role="progressbar" aria-valuenow="{{pct}}" aria-valuemin="0" aria-valuemax="100" style="flex: 1; height: 4px; background: #ebeae8; border-radius: 2px; overflow: hidden">
+                  <div style="{{progressStyle}}"></div>
+                </div>
+                <span style="flex: none; min-width: 36px; font-size: 12px; color: #757575; text-align: right; font-variant-numeric: tabular-nums">{{pctLabel}}</span>
+              </sc-if>
+            </div>
+            <sc-if value="{{hasPreview}}" hint-placeholder-val="{{ true }}">
+              <div id="pv" style="display: flex; align-items: center; gap: 4px; height: 28px; padding-left: 12px; white-space: nowrap; overflow: hidden; font-size: 11px">
+                <span style="flex: none; color: #757575">Так вас увидят:</span>
+                <span style="flex: none; font-weight: 600">Анна, 31</span>
+                <sc-for list="{{pvChips}}" as="c" hint-placeholder-count="2">
+                  <span style="flex: none; display: inline-flex; align-items: center; height: 22px; padding: 0 6px; border-radius: 8px; background: #f3edfe; color: #3a2266">{{c.text}}</span>
+                </sc-for>
+                <sc-if value="{{pvMore}}" hint-placeholder-val="{{ false }}">
+                  <span style="flex: none; display: inline-flex; align-items: center; height: 22px; padding: 0 6px; border-radius: 8px; background: #f2f1f0; color: #757575">{{pvMoreText}}</span>
+                </sc-if>
+              </div>
+              <div id="pvm" aria-hidden="true" style="position: absolute; top: 0; left: 0; visibility: hidden; pointer-events: none; display: flex; gap: 4px; white-space: nowrap; font-size: 11px">
+                <span class="m-lbl" style="flex: none">Так вас увидят:</span>
+                <span class="m-nm" style="flex: none; font-weight: 600">Анна, 31</span>
+                <sc-for list="{{pvAll}}" as="c" hint-placeholder-count="2">
+                  <span class="m-c" style="flex: none; display: inline-flex; align-items: center; height: 22px; padding: 0 6px">{{c.text}}</span>
+                </sc-for>
+                <span class="m-p" style="flex: none; display: inline-flex; align-items: center; height: 22px; padding: 0 6px">+9</span>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{isStub}}" hint-placeholder-val="{{ false }}">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; padding: 24px 16px; text-align: center">
+            <p style="margin: 0; font-size: 16px; line-height: 1.4; font-weight: 500; text-wrap: balance">{{stubText}}</p>
+            <div style="width: 100%; max-width: 280px; display: flex; flex-direction: column; gap: 8px">
+              <button onClick="{{stubAct}}" style="width: 100%; height: 48px; border: none; border-radius: 12px; background: #141414; color: #ffffff; font-size: 16px; font-weight: 600; cursor: pointer">{{stubBtn}}</button>
+              <sc-if value="{{isFeed}}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{toSub}}" style="width: 100%; height: 48px; border-radius: 12px; border: 1.5px solid #141414; background: #ffffff; color: #141414; font-size: 16px; font-weight: 600; cursor: pointer">Назад к подписке</button>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{hasBody}}" hint-placeholder-val="{{ true }}">
+          <div id="appbody" style="flex: 1; min-height: 0; overflow-y: auto; padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 16px">
+
+            <sc-if value="{{isS1}}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 4px">
+                <h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700; text-wrap: balance">К чему вы готовы в ближайший год?</h2>
+                <p style="margin: 0; font-size: 14px; line-height: 1.4; color: #52514e">Покажем тех, кто хочет того же. Ответ можно скрыть</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <sc-for list="{{s1opts}}" as="o" hint-placeholder-count="3">
+                  <button onClick="{{o.click}}" aria-pressed="{{o.pressed}}" style="{{o.style}}"><span>{{o.label}}</span><span style="{{o.dot}}"></span></button>
+                </sc-for>
+              </div>
+              <div style="display: flex; justify-content: flex-end">
+                <button role="switch" aria-checked="{{s1tg.on}}" disabled="{{s1tg.dis}}" onClick="{{s1tg.click}}" style="{{s1tg.style}}"><span>{{s1tg.label}}</span><span style="{{s1tg.track}}"><span style="{{s1tg.knob}}"></span></span></button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{isQ}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 4px">
+                <h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700">{{qTitle}}</h2>
+                <p style="margin: 0; font-size: 14px; line-height: 1.4; color: #52514e">{{qSub}}</p>
+              </div>
+              <sc-for list="{{qs}}" as="q" hint-placeholder-count="2">
+                <div style="display: flex; flex-direction: column; gap: 4px">
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px">
+                    <div style="min-width: 0; font-size: 16px; font-weight: 600; line-height: 1.3">{{q.title}}<sc-if value="{{q.hasCap}}" hint-placeholder-val="{{ false }}"><span style="display: inline-block; margin-left: 6px; font-size: 12px; font-weight: 400; color: #757575; white-space: nowrap">{{q.cap}}</span></sc-if></div>
+                    <button role="switch" aria-checked="{{q.tg.on}}" disabled="{{q.tg.dis}}" onClick="{{q.tg.click}}" style="{{q.tg.style}}"><span>{{q.tg.label}}</span><span style="{{q.tg.track}}"><span style="{{q.tg.knob}}"></span></span></button>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px 6px">
+                    <sc-for list="{{q.chips}}" as="c" hint-placeholder-count="3">
+                      <button onClick="{{c.click}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </sc-if>
+
+            <sc-if value="{{isS4}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 4px">
+                <span style="font-size: 12px; font-weight: 600; color: #7a3fd6">Почти готово</span>
+                <h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700">В чем вам важно совпадать?</h2>
+                <sc-if value="{{s4any}}" hint-placeholder-val="{{ true }}">
+                  <p style="margin: 0; font-size: 14px; line-height: 1.4; color: #52514e">Людей, которые совпадают с вами в отмеченных темах, покажем раньше</p>
+                </sc-if>
+              </div>
+              <sc-if value="{{s4none}}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column; gap: 8px">
+                  <h3 style="margin: 0; font-size: 16px; line-height: 1.3; font-weight: 600">Чтобы выбрать, в чем совпадать, ответьте о себе</h3>
+                  <sc-for list="{{s4qs}}" as="q" hint-placeholder-count="3">
+                    <div style="display: flex; flex-direction: column; gap: 4px">
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px">
+                        <div style="min-width: 0; font-size: 16px; font-weight: 600; line-height: 1.3">{{q.title}}<sc-if value="{{q.hasCap}}" hint-placeholder-val="{{ false }}"><span style="display: inline-block; margin-left: 6px; font-size: 12px; font-weight: 400; color: #757575; white-space: nowrap">{{q.cap}}</span></sc-if></div>
+                        <button role="switch" aria-checked="{{q.tg.on}}" disabled="{{q.tg.dis}}" onClick="{{q.tg.click}}" style="{{q.tg.style}}"><span>{{q.tg.label}}</span><span style="{{q.tg.track}}"><span style="{{q.tg.knob}}"></span></span></button>
+                      </div>
+                      <div style="display: flex; flex-wrap: wrap; gap: 8px 6px">
+                        <sc-for list="{{q.chips}}" as="c" hint-placeholder-count="3">
+                          <button onClick="{{c.click}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{s4any}}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; border: 1px solid #ebeae8; border-radius: 16px; overflow: hidden">
+                  <sc-for list="{{topics}}" as="t" hint-placeholder-count="5">
+                    <sc-if value="{{t.ok}}" hint-placeholder-val="{{ true }}">
+                      <button role="checkbox" aria-checked="{{t.checked}}" onClick="{{t.click}}" style="{{t.rowStyle}}">
+                        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+                          <span style="font-size: 16px; font-weight: 500">{{t.name}}</span>
+                          <span style="font-size: 12px; color: #757575">Ваш ответ: {{t.ans}}</span>
+                        </span>
+                        <span style="{{t.box}}">
+                          <sc-if value="{{t.isOn}}" hint-placeholder-val="{{ false }}">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
+                          </sc-if>
+                        </span>
+                      </button>
+                    </sc-if>
+                    <sc-if value="{{t.off}}" hint-placeholder-val="{{ false }}">
+                      <div style="{{t.rowStyle}}">
+                        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+                          <span style="font-size: 16px; font-weight: 500; color: #757575">{{t.name}}</span>
+                          <span style="font-size: 12px; color: #757575">{{t.offText}}</span>
+                        </span>
+                        <button onClick="{{t.answer}}" style="flex: none; height: 44px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #141414; background: #ffffff; color: #141414; font-size: 14px; font-weight: 500; cursor: pointer">Ответить</button>
+                      </div>
+                    </sc-if>
+                  </sc-for>
+                </div>
+                <div style="font-size: 12px; line-height: 1.4; color: #757575">Выбор важных для вас тем никто не увидит, он не отобразится в вашей анкете и будет использоваться только для улучшения подбора</div>
+              </sc-if>
+            </sc-if>
+
+            <sc-if value="{{isS5}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 4px">
+                <span style="font-size: 12px; font-weight: 600; color: #7a3fd6">{{s5eyebrow}}</span>
+                <h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700">{{s5title}}</h2>
+                <sc-if value="{{s5note}}" hint-placeholder-val="{{ false }}">
+                  <p style="margin: 0; font-size: 14px; line-height: 1.4; color: #52514e">Скрытые ответы работают в подборе, но в анкете их не видно</p>
+                </sc-if>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <span style="font-size: 12px; color: #757575">Так вас увидят</span>
+                <div style="border: 1px solid #ebeae8; border-radius: 16px; overflow: hidden">
+                  <div style="position: relative; height: 112px; background: radial-gradient(circle at 30% 35%, #f6d2b9 0 18%, transparent 19%), radial-gradient(circle at 70% 120%, #c9b3ef 0 45%, transparent 46%), linear-gradient(160deg, #efe7dc, #dcd3f2)">
+                    <span style="position: absolute; left: 16px; bottom: 12px; color: #ffffff; font-size: 24px; font-weight: 700; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35)">Анна, 31</span>
+                  </div>
+                  <div style="padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 6px">
+                    <sc-for list="{{pcChips}}" as="c" hint-placeholder-count="3">
+                      <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 8px; background: #f3edfe; color: #3a2266; font-size: 12px">{{c.text}}</span>
+                    </sc-for>
+                    <sc-if value="{{pcEmpty}}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size: 12px; color: #757575">Сейчас вас увидят так: фото, имя, возраст</span>
+                    </sc-if>
+                  </div>
+                </div>
+                <sc-if value="{{hasHidden}}" hint-placeholder-val="{{ false }}">
+                  <span style="font-size: 12px; color: #757575">{{hiddenText}}</span>
+                </sc-if>
+              </div>
+              <sc-if value="{{showWho}}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; border-radius: 16px; background: #f7f7f5">
+                  <span style="font-size: 12px; color: #757575">Кого покажем первыми</span>
+                  <div style="display: flex; align-items: center; gap: 12px">
+                    <span style="flex: 1; min-width: 0; font-size: 14px; line-height: 1.4">{{whoText}}</span>
+                    <span aria-hidden="true" style="flex: none; display: flex">
+                      <span style="width: 32px; height: 32px; border-radius: 50%; background: #d9c6f3; filter: blur(3px)"></span>
+                      <span style="width: 32px; height: 32px; border-radius: 50%; background: #f3d2bf; filter: blur(3px); margin-left: -8px"></span>
+                      <span style="width: 32px; height: 32px; border-radius: 50%; background: #c8dccf; filter: blur(3px); margin-left: -8px"></span>
+                    </span>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{showMore}}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{openMore}}" style="width: 100%; height: 48px; border-radius: 12px; border: 1.5px solid #141414; background: #ffffff; color: #141414; font-size: 16px; font-weight: 600; cursor: pointer">{{moreLabel}}</button>
+              </sc-if>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 4px 4px 16px; border: 1px solid #ebeae8; border-radius: 16px">
+                <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <span style="font-size: 12px; color: #757575">Кто увидит анкету</span>
+                  <span style="font-size: 14px; font-weight: 500; line-height: 1.4">{{modeLine}}</span>
+                </div>
+                <button onClick="{{openModes}}" style="flex: none; min-height: 44px; padding: 0 12px; border: none; background: transparent; color: #7a3fd6; font-size: 14px; font-weight: 600; cursor: pointer">Изменить</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{isS6}}" hint-placeholder-val="{{ false }}">
+              <sc-if value="{{liked}}" hint-placeholder-val="{{ false }}">
+                <div style="padding: 12px 16px; border-radius: 12px; background: #f3edfe; color: #3a2266; font-size: 14px; line-height: 1.4; font-weight: 500">Вы выбрали: анкету увидят только те, кто вам понравился. Это работает с подпиской</div>
+              </sc-if>
+              <sc-if value="{{notLiked}}" hint-placeholder-val="{{ true }}">
+                <div style="padding: 12px 16px; border-radius: 12px; background: #f7f7f5; color: #52514e; font-size: 14px; line-height: 1.4">Подбор по ответам, скрытие от знакомых по Авито и переписка после взаимного «Нравится» бесплатны</div>
+              </sc-if>
+              <h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700">Знакомьтесь на своих условиях</h2>
+              <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+                <li style="display: flex; gap: 12px; font-size: 14px; line-height: 1.4"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: #7a3fd6"></span><span><b style="font-weight: 600">Анкета только для тех, кто вам понравился.</b> {{perk1}}</span></li>
+                <li style="display: flex; gap: 12px; font-size: 14px; line-height: 1.4"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: #7a3fd6"></span><span><b style="font-weight: 600">Первое слово за вами.</b> Напишите тому, кто понравился, не дожидаясь, пока вы понравитесь друг другу. До 3 сообщений в день</span></li>
+                <li style="display: flex; gap: 12px; font-size: 14px; line-height: 1.4"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: #7a3fd6"></span><span><b style="font-weight: 600">Кому вы понравились.</b> Покажем, как только это случится</span></li>
+              </ul>
+              <div role="group" aria-label="Тариф" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+                <sc-for list="{{tariffs}}" as="t" hint-placeholder-count="3">
+                  <button onClick="{{t.click}}" aria-pressed="{{t.pressed}}" style="{{t.style}}">
+                    <span style="font-size: 12px; color: #757575">{{t.n}}</span>
+                    <span style="font-size: 16px; font-weight: 700; white-space: nowrap">{{t.p}}</span>
+                    <sc-if value="{{t.hasW}}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size: 12px; color: #757575">{{t.w}}</span>
+                    </sc-if>
+                  </button>
+                </sc-for>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <button onClick="{{pay}}" style="width: 100%; height: 48px; border: none; border-radius: 12px; background: #7a3fd6; color: #ffffff; font-size: 16px; font-weight: 600; cursor: pointer">{{payLabel}}</button>
+                <div style="font-size: 12px; color: #757575; text-align: center">Автопродление, отключается в профиле</div>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding-bottom: 8px">
+                <button onClick="{{later}}" style="width: 100%; height: 48px; border: none; border-radius: 12px; background: transparent; color: #141414; font-size: 16px; font-weight: 500; cursor: pointer">Не сейчас</button>
+                <div style="font-size: 12px; color: #757575; text-align: center">{{under}}</div>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-if>
+
+        <sc-if value="{{hasFooter}}" hint-placeholder-val="{{ true }}">
+          <div style="flex: none; padding: 8px 16px 12px">
+            <button onClick="{{next}}" style="{{nextStyle}}">{{nextLabel}}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{hasSheet}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; z-index: 5; background: rgba(20, 20, 20, 0.45); display: flex; flex-direction: column">
+            <button onClick="{{closeSheet}}" tabindex="-1" aria-label="Закрыть" style="flex: 1; min-height: 40px; border: none; background: transparent; cursor: pointer"></button>
+            <div role="dialog" aria-modal="true" aria-label="{{sheetTitle}}" style="max-height: 92%; display: flex; flex-direction: column; background: #ffffff; border-radius: 20px 20px 0 0">
+              <div style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 4px 4px 16px">
+                <h3 style="margin: 0; font-size: 16px; font-weight: 700">{{sheetTitle}}</h3>
+                <button onClick="{{closeSheet}}" aria-label="Закрыть" style="flex: none; width: 44px; height: 44px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer">
+                  <span style="width: 32px; height: 32px; border-radius: 50%; background: #f2f1f0; display: flex; align-items: center; justify-content: center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+                  </span>
+                </button>
+              </div>
+              <div class="sheetbody" style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 16px 8px; display: flex; flex-direction: column; gap: 16px">
+                <sc-for list="{{sheetQs}}" as="q" hint-placeholder-count="1">
+                  <div style="display: flex; flex-direction: column; gap: 4px">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px">
+                      <div style="min-width: 0; font-size: 16px; font-weight: 600; line-height: 1.3">{{q.title}}<sc-if value="{{q.hasCap}}" hint-placeholder-val="{{ false }}"><span style="display: inline-block; margin-left: 6px; font-size: 12px; font-weight: 400; color: #757575; white-space: nowrap">{{q.cap}}</span></sc-if></div>
+                      <button role="switch" aria-checked="{{q.tg.on}}" disabled="{{q.tg.dis}}" onClick="{{q.tg.click}}" style="{{q.tg.style}}"><span>{{q.tg.label}}</span><span style="{{q.tg.track}}"><span style="{{q.tg.knob}}"></span></span></button>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px 6px">
+                      <sc-for list="{{q.chips}}" as="c" hint-placeholder-count="3">
+                        <button onClick="{{c.click}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+                <sc-if value="{{isModeSheet}}" hint-placeholder-val="{{ false }}">
+                  <div role="radiogroup" aria-label="Кто увидит вашу анкету" style="display: flex; flex-direction: column; gap: 8px">
+                    <sc-for list="{{modeOpts}}" as="mo" hint-placeholder-count="3">
+                      <button role="radio" aria-checked="{{mo.on}}" onClick="{{mo.click}}" style="{{mo.style}}">
+                        <span style="{{mo.dot}}"></span>
+                        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; text-align: left">
+                          <span style="font-size: 14px; font-weight: 600; line-height: 1.3">{{mo.l}}</span>
+                          <span style="{{mo.bStyle}}">{{mo.b}}</span>
+                          <span style="font-size: 12px; line-height: 1.4; color: #757575">{{mo.n}}</span>
+                        </span>
+                      </button>
+                    </sc-for>
+                  </div>
+                  <div style="font-size: 12px; color: #757575">Изменить можно в профиле в любой момент</div>
+                </sc-if>
+              </div>
+              <div style="flex: none; padding: 8px 16px 12px">
+                <button onClick="{{sheetBtn}}" style="width: 100%; height: 48px; border: none; border-radius: 12px; background: #141414; color: #ffffff; font-size: 16px; font-weight: 600; cursor: pointer">{{sheetBtnLabel}}</button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <sc-if value="{{showMeta}}" hint-placeholder-val="{{ true }}">
+      <div class="side">
+        <aside aria-label="Описание экрана" style="background: #ffffff; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+          <div style="display: flex; flex-direction: column; gap: 4px">
+            <span style="font-size: 12px; color: #757575; text-transform: uppercase; letter-spacing: 0.04em">{{pTitle}}</span>
+            <h2 style="margin: 0; font-size: 16px; font-weight: 600">{{pName}}</h2>
+          </div>
+          <sc-if value="{{isStub}}" hint-placeholder-val="{{ false }}">
+            <div style="font-size: 13px; color: #757575; line-height: 1.5">Ленты и оплаты в прототипе нет</div>
+          </sc-if>
+          <sc-if value="{{hasStates}}" hint-placeholder-val="{{ true }}">
+            <div role="group" aria-label="Состояния экрана" style="display: flex; flex-wrap: wrap; gap: 6px">
+              <sc-for list="{{states}}" as="st" hint-placeholder-count="3">
+                <button onClick="{{st.click}}" aria-pressed="{{st.pressed}}" style="{{st.style}}">{{st.label}}</button>
+              </sc-for>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <sc-for list="{{pblocks}}" as="pb" hint-placeholder-count="4">
+                <div style="{{pb.style}}"><b style="font-weight: 600">{{pb.b}}</b> {{pb.t}}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </aside>
+      </div>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+var NO = 'Не хочу говорить';
+var ORDER = ['goal', 'sport', 'smoke', 'alcohol', 'kids', 'kidsWant'];
+var Q = {
+  goal: { t: 'К чему вы готовы в ближайший год?', o: ['К семье и браку', 'К долгим отношениям', 'Хочу сначала присмотреться'] },
+  sport: { t: 'Спорт в вашей жизни', o: ['Часто', 'Иногда', 'Не занимаюсь'] },
+  smoke: { t: 'Курите?', hint: 'сигареты, вейп, кальян', o: ['Не курю', 'Иногда', 'Курю', 'Бросаю', NO] },
+  alcohol: { t: 'Как с алкоголем?', o: ['Не пью', 'Редко', 'Регулярно', NO] },
+  kids: { t: 'Есть ли у вас дети?', o: ['Нет', 'Есть, живут со мной', 'Есть, живут отдельно', NO] },
+  kidsWant: { t: 'Дети в будущем', o: ['Хочу детей', 'Пока не знаю', 'Не хочу', NO] }
+};
+var CHIP = {
+  goal: { 'К семье и браку': 'Готова к семье и браку', 'К долгим отношениям': 'Готова к долгим отношениям', 'Хочу сначала присмотреться': 'Хочет присмотреться' },
+  sport: { 'Часто': 'Спорт: часто', 'Иногда': 'Спорт: иногда', 'Не занимаюсь': 'Без спорта' },
+  smoke: { 'Не курю': 'Не курит', 'Иногда': 'Курит иногда', 'Курю': 'Курит', 'Бросаю': 'Бросает курить' },
+  alcohol: { 'Не пью': 'Не пьет', 'Редко': 'Алкоголь: редко', 'Регулярно': 'Алкоголь: регулярно' },
+  kids: { 'Нет': 'Детей нет', 'Есть, живут со мной': 'Есть дети, живут вместе', 'Есть, живут отдельно': 'Есть дети, живут отдельно' },
+  kidsWant: { 'Хочу детей': 'Хочет детей', 'Пока не знаю': 'Дети: пока не знает', 'Не хочу': 'Не хочет детей' }
+};
+var TOPICS = [['goal', 'Что ищу'], ['sport', 'Спорт'], ['smoke', 'Курение'], ['alcohol', 'Алкоголь'], ['kidsWant', 'Дети в будущем']];
+var WHO_ORDER = [['goal', 'что ищу'], ['kidsWant', 'дети в будущем'], ['smoke', 'курение'], ['alcohol', 'алкоголь'], ['sport', 'спорт']];
+var MORE_ORDER = ['goal', 'smoke', 'kidsWant', 'alcohol', 'kids', 'sport'];
+var MODES = {
+  except: { l: 'Все, кроме знакомых по Авито', b: 'Бесплатно', n: 'Не покажем тем, с кем вы общались на Авито', line: 'Все, кроме знакомых по Авито · Бесплатно' },
+  all: { l: 'Все', b: 'Бесплатно', n: 'В том числе знакомые по Авито', line: 'Все · Бесплатно' },
+  liked: { l: 'Только те, кто мне понравился', b: 'С подпиской', n: 'Анкету увидят, только когда вы нажмете «Нравится»', line: 'Только те, кто вам понравился · С подпиской' }
+};
+var TARIFFS = { week: { n: 'Неделя', p: '299 ₽', w: '', btn: 'Подключить за 299 ₽ в неделю' }, month: { n: 'Месяц', p: '599 ₽', w: '138 ₽ в неделю', btn: 'Подключить за 599 ₽ в месяц' }, q: { n: '3 месяца', p: '1 190 ₽', w: '397 ₽ в месяц', btn: 'Подключить за 1 190 ₽ за 3 месяца' } };
+
+var SCREENS = [
+  { n: 'Что вы ищете', d: 'необязательный · 3 состояния · около 98%', pct: 60 },
+  { n: 'Привычки', d: 'необязательный · 4 состояния · около 98%', pct: 70 },
+  { n: 'Дети и планы', d: 'необязательный · 5 состояний · около 99%', pct: 80 },
+  { n: 'В чем вам важно совпадать', d: 'необязательный · 4 состояния · около 99%', pct: 90 },
+  { n: 'Анкета готова', d: 'ничего не требует · 6 состояний · около 99%' },
+  { n: 'Подписка', d: 'ничего не требует · 2 состояния · в доходимость не входит' }
+];
+var PANEL = [
+  [['CR в следующий шаг.', 'Около 98%. Около 1 п.п. базы и еще 1 п.п. за первый экран фрагмента, минус 0,4 за возможность не отвечать.'],
+   ['Обязательность и скрытие.', 'Необязательный. Ответ скрывается тумблером «Видно в анкете».'],
+   ['Гипотеза высокой CR.', 'Если анкета начинается с одного вопроса в один тап и ответ сразу виден в превью, человек входит в нее без усилия. Формулировки вариантов пока гипотеза.'],
+   ['Что видит вторая сторона.', 'Чипс «Готова к долгим отношениям». Скрытое и пропущенное не показываются. Проверяем долей ответивших, следим за долей «Хочу сначала присмотреться».']],
+  [['CR в следующий шаг.', 'Около 98%. Около 1 п.п. базы, 0,4 за третий вопрос на экране, 0,6 за чувствительную тему, минус 0,4 за возможность не отвечать.'],
+   ['Обязательность и скрытие.', 'Необязательный. Любой ответ скрывается тумблером, «Не хочу говорить» скрывает сам.'],
+   ['Гипотеза высокой CR.', 'Если три привычки видны без прокрутки и начинаются с легкого спорта, человек отвечает и про курение с алкоголем.'],
+   ['Что видит вторая сторона.', '«Спорт: иногда · Не курит · Алкоголь: редко». Скрытое и пропущенное не показываются. Проверяем долей ответивших на курение и алкоголь, следим за долей скрытых.']],
+  [['CR в следующий шаг.', 'Около 99%. Около 1 п.п. базы, 0,6 за чувствительную тему, минус 0,4 за возможность не отвечать.'],
+   ['Обязательность и скрытие.', 'Необязательный. Каждый ответ скрывается тумблером. «Не хочу говорить» — отдельный ответ, а не пропуск: считаем их раздельно.'],
+   ['Гипотеза высокой CR.', 'Если два вопроса о детях стоят на одном экране и подзаголовок обещает подобрать людей с похожими взглядами, они читаются как выгода, а не как допрос.'],
+   ['Что видит вторая сторона.', '«Детей нет · Хочет детей». Скрытое и пропущенное не показываются. Проверяем долей содержательных ответов на «Дети в будущем», следим за долей «Пока не знаю».']],
+  [['CR в следующий шаг.', 'Около 99%. Около 1 п.п. базы, 0,4 за выбор из пяти тем (считаем как три решения), минус 0,4 за возможность не отвечать.'],
+   ['Обязательность и скрытие.', 'Необязательный. До первой отметки кнопка «Пропустить», после первой отметки — «Далее». Отметки не видит никто, в анкету они не попадают.'],
+   ['Гипотеза высокой CR.', 'Если отметить тему можно, только ответив о себе, пропуски дозаполняются прямо здесь, без обязательных полей. Так же устроены расширенные фильтры Bumble.'],
+   ['Что видит вторая сторона.', 'Ничего с этого экрана: отметки меняют только порядок показа. Проверяем долей ответивших через «Ответить» среди тех, у кого были пропуски, следим за долей отметивших все пять тем.']],
+  [['CR в следующий шаг.', 'Около 99%. Около 1 п.п. базы и еще около 0,4 п.п. за экран без вопроса: на итоге легко остановиться.'],
+   ['Обязательность и скрытие.', 'Ничего не требует. Скрытие от знакомых по Авито бесплатно и включено сразу.'],
+   ['Гипотеза высокой CR.', 'Если итог показывает анкету глазами второй стороны и не называет пустую анкету готовой, человек идет дальше с результатом или отвечает в один тап. Экран дособирает ответы.'],
+   ['Что видит вторая сторона.', 'Ровно то, что в карточке «Так вас увидят». Проверяем долей анкет от четырех видимых ответов, следим за долей дошедших с 0–1 ответом.']],
+  [['CR в следующий шаг.', 'Проход дальше около 100%: оба выхода ведут дальше. В доходимость экран не входит, ее считаем до его показа. Нажатие «Подключить» не оцениваем.'],
+   ['Обязательность и скрытие.', 'Ничего не требует и ничего не публикует. Платный режим видимости включается только после оплаты.'],
+   ['Гипотеза высокой CR.', 'Если подбор и приватность бесплатны, а платное названо до цены, отказ не выглядит потерей и «Не сейчас» ведет дальше.'],
+   ['Что видит вторая сторона.', 'Подписку не видит. Видит только сообщение, пришедшее вместе с «Нравится». Проверяем долей нажавших «Подключить», следим за отменами автопродления.']]
+];
+
+/* Состояние прохождения: та же модель, что в версии 2 */
+var S = null;
+function emptyAns() { var a = {}, v = {}; ORDER.forEach(function (k) { a[k] = null; v[k] = true; }); return { ans: a, vis: v }; }
+function freshS() { var e = emptyAns(); return { screen: 0, ans: e.ans, vis: e.vis, marks: [], mode: 'except', tariff: 'month', sheet: null, test: false }; }
+
+function has(k) { return !!S.ans[k]; }
+function answered(k) { return has(k) && S.ans[k] !== NO; }
+function visible(k) { return answered(k) && S.vis[k]; }
+function hasKids() { return S.ans.kids === 'Есть, живут со мной' || S.ans.kids === 'Есть, живут отдельно'; }
+function optLabel(k, o) { return (k === 'kidsWant' && o === 'Хочу детей' && hasKids()) ? 'Хочу еще' : o; }
+function qCaption(k) { if (k === 'kidsWant') { return hasKids() ? 'Хотите ли еще детей' : 'Хотите ли вы детей'; } return Q[k].hint || ''; }
+function chipOf(k) { var a = S.ans[k]; if (k === 'kidsWant' && a === 'Хочу детей' && hasKids() && visible('kids')) { return 'Хочет еще детей'; } return CHIP[k][a]; }
+function visChips() { return ORDER.filter(visible).map(chipOf); }
+function effMarks() { return S.marks.filter(answered); }
+function hiddenCount() { return ORDER.filter(function (k) { return has(k) && (S.ans[k] === NO || !S.vis[k]); }).length; }
+function unanswered() { return MORE_ORDER.filter(function (k) { return !has(k); }); }
+function plural(n, a, b, c) { var m = n % 10, h = n % 100; if (m === 1 && h !== 11) { return a; } if (m >= 2 && m <= 4 && (h < 12 || h > 14)) { return b; } return c; }
+
+function pick(k, o) {
+  var prev = S.ans[k];
+  if (prev === o) { S.ans[k] = null; if (o === NO) { S.vis[k] = true; } return; }
+  S.ans[k] = o;
+  if (o === NO) { S.vis[k] = false; } else if (prev === NO) { S.vis[k] = true; }
+}
+function toggleVis(k) { if (S.ans[k] === NO) { return; } S.vis[k] = !S.vis[k]; }
+function spick(o) { var sh = S.sheet; if (sh.pend === o) { sh.pend = null; if (o === NO) { sh.pendVis = true; } } else { if (o === NO) { sh.pendVis = false; } else if (sh.pend === NO) { sh.pendVis = true; } sh.pend = o; } }
+function svis() { if (S.sheet.pend !== NO) { S.sheet.pendVis = !S.sheet.pendVis; } }
+
+/* Состояния переключателя */
+function setAns(o) { for (var k in o) { var v = o[k]; if (v === null) { S.ans[k] = null; S.vis[k] = true; } else if (typeof v === 'string') { S.ans[k] = v; S.vis[k] = v !== NO; } else { S.ans[k] = v[0]; S.vis[k] = v[1]; } } }
+var FULL = { goal: 'К долгим отношениям', sport: 'Иногда', smoke: 'Не курю', alcohol: ['Редко', false], kids: 'Нет', kidsWant: 'Хочу детей' };
+var PART = { goal: 'К долгим отношениям', sport: null, smoke: 'Не курю', alcohol: NO, kids: 'Нет', kidsWant: 'Хочу детей' };
+var NONE = { goal: null, sport: null, smoke: null, alcohol: null, kids: null, kidsWant: null };
+var FEW = { goal: 'К долгим отношениям', sport: null, smoke: 'Не курю', alcohol: NO, kids: null, kidsWant: null };
+var STATES = [
+  { keys: ['goal'], list: [
+    ['Пусто', function () { setAns({ goal: null }); }],
+    ['Отвечено', function () { setAns({ goal: 'К долгим отношениям' }); }],
+    ['Скрыто', function () { setAns({ goal: ['К долгим отношениям', false] }); }]] },
+  { keys: ['sport', 'smoke', 'alcohol'], list: [
+    ['Пусто', function () { setAns({ sport: null, smoke: null, alcohol: null }); }],
+    ['Заполнено', function () { setAns({ sport: 'Иногда', smoke: 'Не курю', alcohol: 'Редко' }); }],
+    ['Со скрытием', function () { setAns({ sport: 'Иногда', smoke: 'Не курю', alcohol: ['Редко', false] }); }],
+    ['«Не хочу говорить»', function () { setAns({ sport: 'Иногда', smoke: NO, alcohol: 'Редко' }); }]] },
+  { keys: ['kids', 'kidsWant'], list: [
+    ['Пусто', function () { setAns({ kids: null, kidsWant: null }); }],
+    ['Без детей', function () { setAns({ kids: 'Нет', kidsWant: 'Хочу детей' }); }],
+    ['С детьми', function () { setAns({ kids: 'Есть, живут со мной', kidsWant: 'Хочу детей' }); }],
+    ['Со скрытием', function () { setAns({ kids: ['Есть, живут со мной', false], kidsWant: 'Хочу детей' }); }],
+    ['«Не хочу говорить»', function () { setAns({ kids: NO, kidsWant: 'Пока не знаю' }); }]] },
+  { keys: ORDER, marks: true, list: [
+    ['Есть ответы', function () { setAns(FULL); S.marks = ['goal', 'kidsWant']; }],
+    ['Часть тем без ответа', function () { setAns(PART); S.marks = []; }],
+    ['Шторка «Ответить»', function () { setAns(PART); S.marks = []; openAnswer('sport'); }],
+    ['Ничего не отвечено', function () { setAns(NONE); S.marks = []; }]] },
+  { keys: ORDER, marks: true, mode: true, list: [
+    ['Анкета готова', function () { setAns(FULL); S.marks = ['goal', 'kidsWant']; S.mode = 'except'; }],
+    ['Шторка «Изменить»', function () { setAns(FULL); S.marks = ['goal', 'kidsWant']; S.mode = 'except'; S.sheet = { kind: 'mode', pend: 'except' }; }],
+    ['Выбран режим с подпиской', function () { setAns(FULL); S.marks = ['goal', 'kidsWant']; S.mode = 'liked'; }],
+    ['Мало ответов', function () { setAns(FEW); S.marks = []; S.mode = 'except'; }],
+    ['Нет ответов', function () { setAns(NONE); S.marks = []; S.mode = 'except'; }],
+    ['Шторка «Ответить на 3 вопроса»', function () { setAns(NONE); S.marks = []; S.mode = 'except'; openMore(); }]] },
+  { keys: [], mode: true, list: [
+    ['Бесплатный режим', function () { S.mode = 'except'; }],
+    ['Выбран «Только те, кто мне понравился»', function () { S.mode = 'liked'; }]] }
+];
+function proj(def) {
+  var p = {};
+  def.keys.forEach(function (k) { p[k] = [S.ans[k], has(k) ? (S.ans[k] === NO ? false : S.vis[k]) : true]; });
+  if (def.marks) { p.m = effMarks().slice().sort().join(); }
+  if (def.mode) { p.mode = S.mode; }
+  p.sh = S.sheet ? (S.sheet.kind + (S.sheet.q || '')) : '';
+  return JSON.stringify(p);
+}
+function activeState(i) {
+  var def = STATES[i]; if (!def) { return -1; }
+  var snap = JSON.stringify(S), cur = proj(def), found = -1;
+  def.list.forEach(function (st, j) {
+    if (found >= 0) { return; }
+    var save = JSON.parse(snap); S.sheet = null; st[1](); var p = proj(def);
+    Object.assign(S, save);
+    if (p === cur) { found = j; }
+  });
+  return found;
+}
+function openAnswer(k) { S.sheet = { kind: 'answer', q: k, pend: S.ans[k], pendVis: has(k) ? S.vis[k] : true }; }
+function openMore() {
+  var qs = unanswered().slice(0, 3), i = qs.indexOf('kids'), j = qs.indexOf('kidsWant');
+  if (i > j && j >= 0) { qs.splice(i, 1); qs.splice(j, 0, 'kids'); }
+  S.sheet = { kind: 'more', qs: qs };
+}
+
+/* Стили, которые зависят от состояния */
+var CHIP_BASE = 'height: 44px; padding: 0 11px; border-radius: 12px; font-size: 14px; white-space: nowrap; cursor: pointer; box-sizing: border-box; ';
+var CHIP_ON = 'background: #f3edfe; border: 1.5px solid #7a3fd6; color: #3a2266;';
+var CHIP_OFF = 'background: #f2f1f0; border: 1.5px solid #f2f1f0; color: #141414;';
+var BTN = 'width: 100%; height: 48px; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; ';
+var PILL = 'min-height: 36px; padding: 0 12px; border-radius: 18px; font-size: 13px; cursor: pointer; ';
+
+function toggleVM(on, dis, click) {
+  return {
+    on: on ? 'true' : 'false', dis: !!dis, click: click,
+    label: on ? 'Видно в анкете' : 'Скрыто. Учтем в подборе',
+    style: 'flex: none; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: none; background: transparent; font-size: 12px; color: #52514e; text-align: right; ' + (dis ? 'opacity: 0.6; cursor: default;' : 'cursor: pointer;'),
+    track: 'flex: none; position: relative; width: 40px; height: 24px; border-radius: 12px; transition: background 0.15s; background: ' + (on ? '#7a3fd6' : '#d6d5d2') + ';',
+    knob: 'position: absolute; top: 3px; left: ' + (on ? '19px' : '3px') + '; width: 18px; height: 18px; border-radius: 50%; background: #ffffff; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); transition: left 0.15s;'
+  };
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.S = freshS();
+    this.state = { tick: 0, pvShown: -1, pvPlus: true };
+    this.pvOwn = 0;
+    this.scrollReset = false;
+    this.onResize = this.fit.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize);
+    this.fit();
+    var self = this;
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { self.fit(); }); }
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  componentDidUpdate() {
+    if (this.scrollReset) {
+      this.scrollReset = false;
+      var b = document.getElementById('appbody');
+      if (b) { b.scrollTop = 0; }
+    }
+    this.fit();
+  }
+  /* Строка «Так вас увидят»: сколько чипсов помещается, остальное в «+N» */
+  fit() {
+    var pv = document.getElementById('pv'), m = document.getElementById('pvm');
+    if (!pv || !m) { return; }
+    var avail = pv.clientWidth - 12;
+    if (avail <= 0) { return; }
+    var lbl = m.querySelector('.m-lbl'), nm = m.querySelector('.m-nm'), pl = m.querySelector('.m-p');
+    if (!lbl || !nm || !pl) { return; }
+    var cs = m.querySelectorAll('.m-c'), w = [], G = 4, i;
+    for (i = 0; i < cs.length; i++) { w.push(cs[i].offsetWidth); }
+    /* Чипсы текущего экрана идут первыми, и первый из них виден всегда; «+N» только если помещается после него */
+    var n = w.length, own = Math.min(this.pvOwn, n, 1), shown = own, plus = false;
+    for (var k = n; k >= own; k--) {
+      var tot = lbl.offsetWidth + G + nm.offsetWidth;
+      for (i = 0; i < k; i++) { tot += G + w[i]; }
+      if (k < n) { tot += G + pl.offsetWidth; }
+      if (tot <= avail) { shown = k; plus = k < n; break; }
+    }
+    if (shown !== this.state.pvShown || plus !== this.state.pvPlus) { this.setState({ pvShown: shown, pvPlus: plus }); }
+  }
+  bump() { this.tick = (this.tick || 0) + 1; this.setState({ tick: this.tick }); }
+  act(fn) { var self = this; return function (e) { S = self.S; fn(e); self.bump(); }; }
+  go(i) { S.sheet = null; S.screen = i; this.scrollReset = true; }
+  qVM(k, ans, vis, inSheet) {
+    var self = this, cap = qCaption(k);
+    return {
+      title: Q[k].t, cap: cap, hasCap: !!cap,
+      tg: toggleVM(ans === NO ? false : vis, ans === NO, this.act(function () { if (inSheet) { svis(); } else { toggleVis(k); } })),
+      chips: Q[k].o.map(function (o) {
+        var on = ans === o;
+        return {
+          label: optLabel(k, o), pressed: on ? 'true' : 'false',
+          style: CHIP_BASE + (on ? CHIP_ON : CHIP_OFF),
+          click: self.act(function () { if (inSheet) { spick(o); } else { pick(k, o); } })
+        };
+      })
+    };
+  }
+  renderVals() {
+    var self = this;
+    S = this.S;
+    var s = S.screen, stub = s === 'feed' || s === 'pay';
+    var act = this.act.bind(this);
+    var active = stub ? -1 : activeState(s);
+    var R = {};
+
+    R.showMeta = !S.test;
+    R.testAttr = S.test ? 'true' : 'false';
+    R.testLabel = S.test ? 'Показать описание' : 'Режим теста: только экран';
+    R.testStyle = PILL + 'font-weight: 500; ' + (S.test ? 'background: #141414; color: #ffffff; border: 1px solid #141414;' : 'background: #ffffff; color: #141414; border: 1px solid #dbdbd9;');
+    R.toggleTest = act(function () { S.test = !S.test; });
+    R.phoneClass = 'phone' + (S.test ? ' phone-test' : '');
+    R.onKey = function (e) { if (e.key === 'Escape' && self.S.sheet) { self.S.sheet = null; self.bump(); } };
+
+    /* Верхняя панель */
+    var pct = null;
+    if (!stub) {
+      if (s === 4) { pct = visChips().length >= 4 ? 100 : 95; }
+      else if (SCREENS[s].pct != null) { pct = SCREENS[s].pct; }
+    }
+    R.isStub = stub; R.hasTop = !stub; R.hasBody = !stub;
+    R.hasPct = pct != null; R.pct = pct == null ? 0 : pct; R.pctLabel = pct + '%';
+    R.progressStyle = 'height: 100%; border-radius: 2px; background: #7a3fd6; width: ' + (pct || 0) + '%;';
+    R.backDisabled = s === 0;
+    R.backColor = s === 0 ? '#c4c2be' : '#141414';
+    R.backStyle = 'width: 44px; height: 44px; flex: none; border: none; background: transparent; display: flex; align-items: center; justify-content: center; border-radius: 12px; ' + (s === 0 ? 'cursor: default;' : 'cursor: pointer;');
+    R.back = act(function () { if (S.screen > 0) { self.go(S.screen - 1); } });
+
+    /* Строка «Так вас увидят» */
+    R.hasPreview = !stub && s <= 2;
+    var own = [['goal'], ['sport', 'smoke', 'alcohol'], ['kids', 'kidsWant']][s] || [];
+    var pvAll = own.concat(ORDER.filter(function (k) { return own.indexOf(k) < 0; })).filter(visible).map(chipOf);
+    this.pvOwn = own.filter(visible).length;
+    var shown = this.state.pvShown < 0 || this.state.pvShown > pvAll.length ? pvAll.length : Math.max(this.state.pvShown, Math.min(this.pvOwn, 1));
+    R.pvAll = pvAll.map(function (t) { return { text: t }; });
+    R.pvChips = pvAll.slice(0, shown).map(function (t) { return { text: t }; });
+    R.pvMore = shown < pvAll.length && this.state.pvPlus;
+    R.pvMoreText = '+' + (pvAll.length - shown);
+
+    /* Кнопка внизу */
+    var nAns = 0, nextOn = false;
+    if (s === 0) { nAns = ['goal'].filter(has).length; }
+    if (s === 1) { nAns = ['sport', 'smoke', 'alcohol'].filter(has).length; }
+    if (s === 2) { nAns = ['kids', 'kidsWant'].filter(has).length; }
+    if (s === 3) { nAns = effMarks().length; }
+    nextOn = s === 4 ? true : nAns > 0;
+    R.hasFooter = !stub && s <= 4;
+    R.nextLabel = s === 4 ? 'Далее' : (nAns ? 'Далее' : 'Пропустить');
+    R.nextStyle = BTN + (nextOn ? 'background: #141414; color: #ffffff;' : 'background: #f2f1f0; color: #141414;');
+    R.next = act(function () { self.go(S.screen + 1); });
+
+    /* Экран 1 */
+    R.isS1 = s === 0;
+    R.s1opts = Q.goal.o.map(function (o) {
+      var on = S.ans.goal === o;
+      return {
+        label: o, pressed: on ? 'true' : 'false',
+        style: 'display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 52px; padding: 0 16px; border-radius: 12px; font-size: 16px; text-align: left; color: #141414; cursor: pointer; box-sizing: border-box; ' + (on ? 'background: #f3edfe; border: 1.5px solid #7a3fd6;' : 'background: #ffffff; border: 1.5px solid #ebeae8;'),
+        dot: 'flex: none; width: 20px; height: 20px; border-radius: 50%; box-sizing: border-box; background: #ffffff; ' + (on ? 'border: 6px solid #7a3fd6;' : 'border: 1.5px solid #a5a29d;'),
+        click: act(function () { pick('goal', o); })
+      };
+    });
+    R.s1tg = toggleVM(S.vis.goal, false, act(function () { toggleVis('goal'); }));
+
+    /* Экраны 2 и 3 */
+    R.isQ = s === 1 || s === 2;
+    R.qTitle = s === 1 ? 'Ваши привычки' : 'Дети и планы';
+    R.qSub = s === 1 ? 'Подберем людей с похожими. Любой ответ можно скрыть' : 'Подберем людей с похожими взглядами на детей. Любой ответ можно скрыть';
+    R.qs = R.isQ ? (s === 1 ? ['sport', 'smoke', 'alcohol'] : ['kids', 'kidsWant']).map(function (k) { return self.qVM(k, S.ans[k], S.vis[k], false); }) : [];
+
+    /* Экран 4 */
+    R.isS4 = s === 3;
+    var anyAns = TOPICS.some(function (t) { return answered(t[0]); });
+    var marks = effMarks();
+    R.s4any = anyAns; R.s4none = !anyAns;
+    R.s4qs = R.isS4 && !anyAns ? ['goal', 'smoke', 'kidsWant'].map(function (k) { return self.qVM(k, S.ans[k], S.vis[k], false); }) : [];
+    R.topics = TOPICS.map(function (t, i) {
+      var k = t[0], ok = answered(k), on = marks.indexOf(k) >= 0;
+      return {
+        ok: ok, off: !ok, name: t[1], ans: ok ? optLabel(k, S.ans[k]) : '',
+        offText: S.ans[k] === NO ? 'Вы решили не отвечать' : 'Чтобы отметить, ответьте о себе',
+        checked: on ? 'true' : 'false', isOn: on,
+        rowStyle: 'display: flex; align-items: center; gap: 12px; width: 100%; min-height: 60px; padding: 8px 16px; border: none; ' + (i ? 'border-top: 1px solid #ebeae8; ' : '') + 'text-align: left; color: #141414; box-sizing: border-box; ' + (ok ? 'background: #ffffff; cursor: pointer;' : 'background: #f7f7f5;'),
+        box: 'flex: none; width: 24px; height: 24px; border-radius: 7px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; ' + (on ? 'background: #7a3fd6; border: 1.5px solid #7a3fd6;' : 'background: #ffffff; border: 1.5px solid #a5a29d;'),
+        click: act(function () { var j = S.marks.indexOf(k); if (j >= 0) { S.marks.splice(j, 1); } else { S.marks.push(k); } }),
+        answer: act(function () { openAnswer(k); })
+      };
+    });
+
+    /* Экран 5 */
+    R.isS5 = s === 4;
+    var v = visChips(), n = v.length, ready = n >= 4;
+    var un = unanswered().length, N = Math.min(3, un);
+    R.s5eyebrow = ready ? 'Готово' : 'Почти готово';
+    R.s5title = ready ? 'Анкета готова' : (n === 0 ? 'В анкете пока нет ответов' : 'В анкете ' + n + ' ' + plural(n, 'ответ', 'ответа', 'ответов') + ' из 6');
+    R.s5note = !ready && N === 0;
+    R.pcChips = v.map(function (t) { return { text: t }; });
+    R.pcEmpty = n === 0;
+    var hc = hiddenCount();
+    R.hasHidden = !!hc;
+    R.hiddenText = 'Скрыто: ' + hc + ' ' + plural(hc, 'ответ', 'ответа', 'ответов') + '. ' + (hc === 1 ? 'Его' : 'Их') + ' видите только вы';
+    R.showWho = ready;
+    var names = WHO_ORDER.filter(function (w) { return marks.indexOf(w[0]) >= 0; }).map(function (w) { return w[1]; }), who;
+    if (!names.length) { who = 'Всех, кому вы подходите по ответам'; }
+    else if (names.length === 1) { who = 'Людей, которые совпадают с вами в теме: ' + names[0]; }
+    else if (names.length <= 3) { who = 'Людей, которые совпадают с вами в темах: ' + names.slice(0, -1).join(', ') + ' и ' + names[names.length - 1]; }
+    else { who = 'Людей, которые совпадают с вами в темах: ' + names.slice(0, 3).join(', ') + ' и еще ' + (names.length - 3); }
+    R.whoText = who;
+    R.showMore = !ready && N > 0;
+    R.moreLabel = n === 0 ? 'Ответить на ' + N + ' ' + plural(N, 'вопрос', 'вопроса', 'вопросов') : 'Ответить еще на ' + N;
+    R.openMore = act(function () { openMore(); });
+    R.modeLine = MODES[S.mode].line;
+    R.openModes = act(function () { S.sheet = { kind: 'mode', pend: S.mode }; });
+
+    /* Экран 6 */
+    R.isS6 = s === 5;
+    var liked = S.mode === 'liked';
+    R.liked = liked; R.notLiked = !liked;
+    R.perk1 = liked ? 'Включим сразу после оплаты' : 'Ее увидят, только когда вы нажмете «Нравится»';
+    R.tariffs = ['week', 'month', 'q'].map(function (id) {
+      var T = TARIFFS[id], on = S.tariff === id;
+      return {
+        n: T.n, p: T.p, w: T.w, hasW: !!T.w, pressed: on ? 'true' : 'false',
+        style: 'display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; min-height: 76px; padding: 10px 12px; border-radius: 12px; text-align: left; color: #141414; cursor: pointer; box-sizing: border-box; ' + (on ? 'background: #f3edfe; border: 1.5px solid #7a3fd6;' : 'background: #ffffff; border: 1.5px solid #ebeae8;'),
+        click: act(function () { S.tariff = id; })
+      };
+    });
+    R.payLabel = TARIFFS[S.tariff].btn;
+    R.pay = act(function () { self.go('pay'); });
+    R.later = act(function () { self.go('feed'); });
+    R.under = S.mode === 'all' ? 'Анкета останется видна всем' : (liked ? 'Без подписки анкета останется видна всем, кроме знакомых по Авито' : 'Анкета останется видна всем, кроме знакомых по Авито');
+
+    /* Заглушки */
+    R.stubText = s === 'feed' ? 'Дальше лента. Подбор по вашим ответам работает бесплатно' : 'Дальше оплата. За пределами фрагмента';
+    R.stubBtn = s === 'feed' ? 'Пройти фрагмент заново' : 'Назад к подписке';
+    R.isFeed = s === 'feed';
+    R.toSub = act(function () { self.go(5); });
+    R.stubAct = act(function () {
+      if (S.screen === 'feed') { var em = emptyAns(); S.ans = em.ans; S.vis = em.vis; S.marks = []; S.mode = 'except'; S.tariff = 'month'; self.go(0); }
+      else { self.go(5); }
+    });
+
+    /* Шторки */
+    var sh = S.sheet;
+    R.hasSheet = !!sh;
+    R.isModeSheet = !!sh && sh.kind === 'mode';
+    R.sheetTitle = !sh ? '' : (sh.kind === 'answer' ? 'Ответьте о себе' : (sh.kind === 'more' ? 'Ответьте в один тап' : 'Кто увидит вашу анкету'));
+    R.sheetQs = !sh ? [] : (sh.kind === 'answer' ? [this.qVM(sh.q, sh.pend, sh.pendVis, true)] : (sh.kind === 'more' ? sh.qs.map(function (k) { return self.qVM(k, S.ans[k], S.vis[k], false); }) : []));
+    R.modeOpts = ['except', 'all', 'liked'].map(function (id) {
+      var M = MODES[id], on = !!sh && sh.pend === id;
+      return {
+        l: M.l, b: M.b, n: M.n, on: on ? 'true' : 'false',
+        style: 'display: flex; align-items: flex-start; gap: 12px; width: 100%; padding: 12px 16px; border-radius: 12px; cursor: pointer; color: #141414; box-sizing: border-box; ' + (on ? 'background: #f3edfe; border: 1.5px solid #7a3fd6;' : 'background: #ffffff; border: 1.5px solid #ebeae8;'),
+        dot: 'flex: none; margin-top: 1px; width: 20px; height: 20px; border-radius: 50%; box-sizing: border-box; background: #ffffff; ' + (on ? 'border: 6px solid #7a3fd6;' : 'border: 1.5px solid #a5a29d;'),
+        bStyle: 'font-size: 12px; font-weight: 600; color: ' + (id === 'liked' ? '#7a3fd6' : '#757575') + ';',
+        click: act(function () { S.sheet.pend = id; })
+      };
+    });
+    R.sheetBtnLabel = !sh ? '' : (sh.kind === 'answer' ? 'Сохранить' : (sh.kind === 'more' ? 'Готово' : 'Выбрать'));
+    R.sheetBtn = act(function () {
+      var x = S.sheet; if (!x) { return; }
+      if (x.kind === 'answer') { if (x.pend) { S.ans[x.q] = x.pend; S.vis[x.q] = x.pend === NO ? false : x.pendVis; } S.sheet = null; }
+      else if (x.kind === 'mode') { S.mode = x.pend; S.sheet = null; }
+      else { S.sheet = null; }
+    });
+    R.closeSheet = act(function () { S.sheet = null; });
+
+    /* Карта */
+    var cur = stub ? 5 : s;
+    R.mapItems = SCREENS.map(function (sc, i) {
+      var on = cur === i;
+      return {
+        label: (i + 1) + '. ' + sc.n, d: sc.d, current: on ? 'true' : 'false',
+        style: 'display: flex; flex-direction: column; gap: 2px; width: 100%; min-height: 44px; padding: 8px 12px; border: none; border-radius: 10px; text-align: left; color: #141414; cursor: pointer; box-sizing: border-box; background: ' + (on ? '#f3edfe' : 'transparent') + ';',
+        click: act(function () { self.go(i); })
+      };
+    });
+
+    /* Панель */
+    R.pTitle = stub ? 'После фрагмента' : 'Экран ' + (s + 1);
+    R.pName = stub ? (s === 'feed' ? 'Заглушка ленты' : 'Заглушка оплаты') : SCREENS[s].n;
+    R.hasStates = !stub;
+    R.states = stub ? [] : STATES[s].list.map(function (st, j) {
+      var on = active === j;
+      return {
+        label: st[0], pressed: on ? 'true' : 'false',
+        style: PILL + (on ? 'background: #141414; color: #ffffff; border: 1px solid #141414;' : 'background: #ffffff; color: #141414; border: 1px solid #dbdbd9;'),
+        click: act(function () { S.sheet = null; st[1](); })
+      };
+    });
+    R.pblocks = stub ? [] : PANEL[s].map(function (b, i) {
+      return { b: b[0], t: b[1], style: 'font-size: 14px; line-height: 1.5; padding: 12px 0; ' + (i ? 'border-top: 1px solid #ebeae8;' : 'padding-top: 4px;') };
+    });
+    return R;
+  }
+}
+</script>
+</body>
+</html>
